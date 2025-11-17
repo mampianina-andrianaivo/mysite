@@ -23,12 +23,9 @@
   --bg-light: #f8f9fa;
 }
 
-
-
-/* Si tu utilises les icônes Bootstrap par défaut */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: black;   /* fond noir */
+  background-color: black;
   background-size: 50%, 50%;
   width: 30px;
   height: 30px;
@@ -36,21 +33,18 @@
   opacity: 0.3;
 }
 
-/* --- Indicateurs (les petits points) --- */
 .carousel-indicators li {
-  background-color: black;       /* couleur des points */
-  border-color: black;           /* bordure des points */
+  background-color: black;
+  border-color: black;
   opacity: 0.2;
-    width:0%;                 /* transparence si tu veux */
+  width:0%;
 }
 
-/* Indicateur actif */
 .carousel-indicators .active {
   background-color: black;
   opacity: 0.3;
   width:0%;
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -61,7 +55,6 @@ html {
   scrollbar-gutter: stable;
 }
 
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
@@ -70,9 +63,6 @@ body {
   line-height: 1.6;
   font-size: 16px;
 }
-
-
-
 
 img { 
   margin-bottom: 2rem;
@@ -85,7 +75,6 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 .carousel-container img {
   margin-bottom: 0rem;
@@ -111,10 +100,14 @@ img {
   font-weight: 500;
 }
 
-.navbar-nav .nav-link:hover {
+.navbar-nav .navbar-nav : hover {
   background-color: rgba(0,0,0,0.2);
   border-radius: 5px;
 }
+
+ .desktop-sidebar .nav-link:hover {
+    background-color: rgba(0,0,0,0.2);
+  }
 
 .navbar-toggler {
   border-color: rgba(255,255,255,0.3);
@@ -233,31 +226,103 @@ h6 {
   border-radius: 8px;
 }
 
+/* DESKTOP LAYOUT - Split 1/3 + 2/3 */
+@media screen and (min-width: 991px) {
+  body {
+    display: flex;
+  }
+  
+  .navbar {
+    display: none;
+  }
+  
+  /* Cacher le carousel dans le contenu en desktop */
+  .carousel-mobile-only {
+    display: none;
+  }
+  
+  /* Sidebar fixe 1/3 */
+  .desktop-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 40%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    overflow-y: auto;
+    padding: 2rem 1rem;
+  }
+  
+  .desktop-sidebar .carousel-container {
+    max-width: 90%;
+    margin: 1rem auto 2rem auto;
+  }
+  
+  .desktop-sidebar .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .desktop-sidebar .nav-item {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .desktop-sidebar .nav-link {
+    display: block;
+    color: white !important;
+    margin-right: ;
+    padding: 0.75rem 1rem;
+    margin-left:50%;
+    margin-right:3rem;
+    transition: all 0.3s;
+    font-weight: 500;
+    text-align: right;
+    border-radius: 5px;
+  }
+  
+  
+  /* Contenu principal 2/3 */
+  .main-container {
+    margin-left: 40%;
+    width: 60%;
+    padding: 0rem 6rem 6rem 6rem;
+    max-width: none;
+  }
+  
+  html {
+    scroll-padding-top: 2rem;
+  }
+}
 
+/* MOBILE - garde l'ancien style */
 @media screen and (max-width: 990px) {
+  .desktop-sidebar {
+    display: none;
+  }
 
-img { 
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  border-radius: 10px;
-  width: calc(100vw - 15%);
-  height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+  img { 
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: calc(100vw - 15%);
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.main-container {
+  .main-container {
+    padding: 55px 1rem 2rem 1rem;
+  }
 
-  padding: 55px 1rem 2rem 1rem;
-}
-
-.content-section {
-  padding: 0.5rem;
-}
+  .content-section {
+    padding: 0.5rem;
+  }
 
   h2 {
     font-size: 1.3rem;
+    margin: 0.5rem 0 0rem 0;
   }
   
   h6 {
@@ -270,39 +335,25 @@ img {
   }
 
   .content-section h3 {
-
-  margin-top: 0.3rem;
-
+    margin-top: 0.3rem;
+  }
 }
-
-h2 {
-
-  margin: 0.5rem 0 0rem 0;
-
-}
-}
-
 </style>
 </head>
 <body>
 
-<!-- ============================================ -->
-<!-- CONFIGURATION - À MODIFIER ICI UNIQUEMENT -->
-<!-- ============================================ -->
 <script>
 const CONFIG = {
-  // Informations du profil
   profile: {
     name: "ANDRIANAIVO Mampianina Christian",
     titlex1: "Doctorant à l'Université de Lille - CLERSE 8019",
     titlex2: "Autre rattachement : UMI-Source",
     titlex3: "",
-    images: ["1.jpg", "2.jpg", "3.jpg"] // Images du carousel
+    images: ["1.jpg", "2.jpg", "3.jpg"]
   },
   
-  // Configuration du menu (ordre d'affichage)
   menu: [
-    { id: "profil", label: "Profil", file: null }, // null = section spéciale avec carousel
+    { id: "profil", label: "Profil", file: null },
     { id: "experiences", label: "Expériences", file: "experiences.md" },
     { id: "publications", label: "Publications", file: "publications.md" },
     { id: "terrain", label: "Terrain", file: "terrain.md" },
@@ -310,7 +361,6 @@ const CONFIG = {
     { id: "contact", label: "Contact", file: "contact.md" }
   ],
   
-  // Contact
   contact: {
     email: "christianmampianina@gmail.com",
     phone: "© 2025 Andrianaivo Mampianina C."
@@ -318,10 +368,24 @@ const CONFIG = {
 };
 </script>
 
-<!-- ============================================ -->
-<!-- NE PAS MODIFIER EN DESSOUS -->
-<!-- ============================================ -->
+<!-- SIDEBAR DESKTOP (caché en mobile) -->
+<div class="desktop-sidebar">
+  <div class="carousel-container">
+    <div id="demo-desktop" class="carousel slide" data-ride="carousel">
+      <ul class="carousel-indicators" id="desktop-indicators"></ul>
+      <div class="carousel-inner" id="desktop-carousel-inner"></div>
+      <a class="carousel-control-prev" href="#demo-desktop" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo-desktop" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </div>
+  <ul class="navbar-nav" id="desktop-menu"></ul>
+</div>
 
+<!-- NAVBAR MOBILE (caché en desktop) -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#profil">Andrianaivo Mampianina C.</a>
@@ -329,7 +393,7 @@ const CONFIG = {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto" id="main-menu"></ul>
+      <ul class="navbar-nav ml-auto" id="mobile-menu"></ul>
     </div>
   </div>
 </nav>
@@ -337,18 +401,50 @@ const CONFIG = {
 <div class="main-container" id="content-container"></div>
 
 <script>
+// Génération du carousel desktop
+function generateDesktopCarousel() {
+  const indicators = document.getElementById('desktop-indicators');
+  const carouselInner = document.getElementById('desktop-carousel-inner');
+  
+  CONFIG.profile.images.forEach((img, index) => {
+    const li = document.createElement('li');
+    li.setAttribute('data-target', '#demo-desktop');
+    li.setAttribute('data-slide-to', index);
+    if (index === 0) li.className = 'active';
+    indicators.appendChild(li);
+    
+    const div = document.createElement('div');
+    div.className = 'carousel-item' + (index === 0 ? ' active' : '');
+    div.innerHTML = `<img src="${img}" alt="${CONFIG.profile.name}">`;
+    carouselInner.appendChild(div);
+  });
+}
+
 // Génération du menu
 function generateMenu() {
-  const menu = document.getElementById('main-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const desktopMenu = document.getElementById('desktop-menu');
+  
   CONFIG.menu.forEach((item, index) => {
-    const li = document.createElement('li');
-    li.className = 'nav-item';
-    const a = document.createElement('a');
-    a.className = 'nav-link' + (index === 0 ? ' active' : '');
-    a.href = '#' + item.id;
-    a.textContent = item.label;
-    li.appendChild(a);
-    menu.appendChild(li);
+    // Menu mobile
+    const liMobile = document.createElement('li');
+    liMobile.className = 'nav-item';
+    const aMobile = document.createElement('a');
+    aMobile.className = 'nav-link' + (index === 0 ? ' active' : '');
+    aMobile.href = '#' + item.id;
+    aMobile.textContent = item.label;
+    liMobile.appendChild(aMobile);
+    mobileMenu.appendChild(liMobile);
+    
+    // Menu desktop
+    const liDesktop = document.createElement('li');
+    liDesktop.className = 'nav-item';
+    const aDesktop = document.createElement('a');
+    aDesktop.className = 'nav-link' + (index === 0 ? ' active' : '');
+    aDesktop.href = '#' + item.id;
+    aDesktop.textContent = item.label;
+    liDesktop.appendChild(aDesktop);
+    desktopMenu.appendChild(liDesktop);
   });
 }
 
@@ -382,7 +478,7 @@ function generateProfileSection() {
     <article id="profil">
       <h2>Profil</h2>
       
-      <div class="carousel-container">
+      <div class="carousel-container carousel-mobile-only">
         <div id="demo" class="carousel slide" data-ride="carousel">
           <ul class="carousel-indicators">${indicators}</ul>
           <div class="carousel-inner">${images}</div>
@@ -453,14 +549,17 @@ function initializeNavigation() {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
       
-      const target = document.querySelector(this.getAttribute('href'));
+      // Mettre à jour les deux menus (mobile et desktop)
+      const href = this.getAttribute('href');
+      document.querySelectorAll(`a[href="${href}"]`).forEach(l => l.classList.add('active'));
+      
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
         
         const navbar = document.querySelector('.navbar-collapse');
-        if (navbar.classList.contains('show')) {
+        if (navbar && navbar.classList.contains('show')) {
           navbar.classList.remove('show');
         }
       }
@@ -490,6 +589,7 @@ function initializeNavigation() {
 
 // Initialisation au chargement
 document.addEventListener('DOMContentLoaded', () => {
+  generateDesktopCarousel();
   generateMenu();
   generateContent();
 });
@@ -497,24 +597,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
