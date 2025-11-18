@@ -257,12 +257,8 @@ h5 {
   
   /* Menu en colonnes de 6 */
 .desktop-sidebar .navbar-nav {
-  display: grid;
-  grid-template-columns: repeat(2, 15rem);  /* ← 2 colonnes de 15rem chacune */
-  grid-auto-flow: column;
-  gap: 0.2rem 1rem;
-  grid-template-rows: repeat(4, auto);
-  justify-content: left;
+  padding-right: 10%;
+  padding-left: 40%;
 }
   
   .desktop-sidebar .nav-item {
@@ -272,13 +268,14 @@ h5 {
   .desktop-sidebar .nav-link {
     display: block;
     color: white !important;
-    padding: 0.5rem 1rem;
     transition: all 0.3s;
     font-weight: 500;
     font-size: 1.2rem;
-    text-align: left;
+    text-align: right;
+    padding-right: 10%;
+    padding-bottom: 1%;
+    padding-top:1%;
     border-radius: 5px;
-padding-right: 3rem;
   }
   
   .main-container {
