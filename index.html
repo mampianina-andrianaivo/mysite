@@ -341,9 +341,84 @@ h5 {
   }
 }
   
+
+/* Styles pour les formulaires dans les markdown */
+.content-section form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.content-section form input[type="text"],
+.content-section form input[type="email"],
+.content-section form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.content-section form input[type="text"]:focus,
+.content-section form input[type="email"]:focus,
+.content-section form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.content-section form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.content-section form button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.content-section form button[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+.content-section form .text-center {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.content-section form .text-center p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.content-section form .text-center a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.content-section form .text-center a:hover {
+  text-decoration: underline;
+}
+
 </style>
 </head>
 <body>
+
+
 
 <!-- SIDEBAR DESKTOP (caché en mobile) -->
 <div class="desktop-sidebar">
@@ -648,6 +723,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   await generateContent();
 });
 </script>
+
+<! -- Step 2: Add the Web3Forms script -->
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 
