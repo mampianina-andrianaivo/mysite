@@ -1,7 +1,9 @@
 ## Contact
 
-<form method="post" action="https://forms.un-static.com/forms/6c2d1f338d1dd0f1ba01a94b4b434e07fe598420">
-  <input type="text" name="name" placeholder="Entrer votre nom" required>
+<form name="contact" netlify>
+
+<input type="text" name="name"  placeholder="Entrer votre nom" required>
+
   <input type="email" name="email" placeholder="Entrer votre adresse e-mail" required>
   <textarea name="message" cols="40" rows="6"></textarea>
 
@@ -13,14 +15,13 @@
   <input type="checkbox" name="human" required>
   Je ne suis pas un robot
 </center></label>
+	
+  <p><button type="submit">Send</button></p>
 
-  <button type="submit">Send</button>
-  <div class="text-center">
-    <p><small><center>(Powered by <a rel="nofollow" href="https://un-static.com">Un-static Forms</a>)</center></small></p>
-  </div>
+<p><small><center>(Powered by <a rel="nofollow" href="https://un-static.com">Un-static Forms</a>)</center></small></p>
+  
 </form>
 
+Testing
 
 <center>2025 Andrianaivo</center>
-
----
