@@ -31,7 +31,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
 });
 </script>
 
-Make it true
+Make it true again
 
 <center>2025 Andrianaivo</center>
 
