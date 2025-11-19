@@ -10,9 +10,11 @@
 <input type="text" name="honeypot" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
 
 <center>
-  <input type="checkbox" name="human" required> Confirmation de l'envoi
+  <input type="checkbox" name="human" required>
 </center>
-
+  <div class="text-center">
+    <p><small><center>Confirmation de l'envoi</center></small></p>
+  </div>
   <button type="submit">Send</button>
   <div class="text-center">
     <p><small><center>(Powered by <a rel="nofollow" href="https://un-static.com">Un-static Forms</a>)</center></small></p>
