@@ -10,10 +10,8 @@
 <input type="text" name="honeypot" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
 
 <center>
-  <input type="checkbox" name="human" required>
+  <input type="checkbox" name="human" required>Confirmation de l'envoi
 </center>
-
-<center><p>Je ne suis pas un robot</p></center>
 
   <button type="submit">Send</button>
   <div class="text-center">
