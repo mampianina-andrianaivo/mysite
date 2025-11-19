@@ -37,4 +37,6 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
 });
 </script>
 
+seriously
+
 <center>2025 Andrianaivo</center>
