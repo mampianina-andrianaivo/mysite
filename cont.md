@@ -1,6 +1,6 @@
 ## Contact
 
-<form name="contact"  action="POST" data-netlify="true">
+<form action="POST" data-netlify="true">
   <p>
     <label><input type="text" name="name" /></label>
   </p>
