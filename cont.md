@@ -1,20 +1,39 @@
-<form name="contact" method="POST" data-netlify="true">
-  <p>
-    <label>Your Name: <input type="text" name="name" /></label>
-  </p>
-  <p>
-    <label>Your Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <label>Your Role: <select name="role[]" multiple>
-      <option value="leader">Leader</option>
-      <option value="follower">Follower</option>
-    </select></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message"></textarea></label>
-  </p>
-  <p>
-    <button type="submit">Send</button>
-  </p>
+## Contact
+
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Entrer votre nom" required>
+  <input type="email" name="email" placeholder="Entrer votre adresse e-mail" required>
+  <textarea name="message" required></textarea>
+
+  <input type="text" name="honeypot" style="display:none">
+
+  <button type="submit">Envoyer</button>
 </form>
+
+<p id="status"></p>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = new FormData(e.target);
+
+  // Petit secret (généré côté client, pas devinable)
+  form.append("sec", btoa(location.hostname + "|42"));
+
+  const res = await fetch("/.netlify/functions/send", {
+    method: "POST",
+    body: form,
+  });
+
+  document.getElementById("status").innerText =
+    res.ok ? "Envoyé ✔️" : "Erreur ❌";
+});
+</script>
+
+Make it true
+
+<center>2025 Andrianaivo</center>
+
+
+
