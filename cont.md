@@ -11,7 +11,7 @@
 
 <label><center>
   <input type="checkbox" name="human" required><br>
-  <p>Je ne suis pas un robot</p>
+  <center><p>Je ne suis pas un robot</p></center>
 </center></label>
 
   <button type="submit">Send</button>
