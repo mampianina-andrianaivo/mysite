@@ -24,7 +24,6 @@
   --bg-light: #f8f9fa;
 }
 
-/* general styles retained from original */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: black;
@@ -51,9 +50,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 63px;
-}
-
-html {
   scrollbar-gutter: stable;
 }
 
@@ -111,7 +107,7 @@ img {
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stro[...]");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .main-container {
@@ -227,13 +223,14 @@ h5 {
   border-radius: 8px;
 }
 
-/* Tiles grid (new) */
+/* TILES GRID */
 .tiles-row {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
 .tile {
   background: #fff;
   border-radius: 8px;
@@ -244,71 +241,112 @@ h5 {
   display: flex;
   flex-direction: column;
   height: 15rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tile.gallery-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.tile.gallery-tile .tile-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  position: relative;
+}
+
+.tile.gallery-tile .tile-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0;
+}
+
+.tile.gallery-tile .gallery-counter {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tile.blog-tile .tile-preview {
+  padding: 0.75rem;
+}
 
 .tile .tile-preview img {
   max-width: 100%;
   border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding : 0px;
+  padding: 0px;
 }
 
-/* New preview style for articles: subtle tinted background and italic excerpt */
 .tile .tile-snippet {
   padding: 0.75rem;
   color: var(--text-dark);
   font-size: 0.95rem;
   text-align: left;
-  width:100%;
+  width: 100%;
   background: linear-gradient(180deg, rgba(8,120,114,0.03), rgba(8,120,114,0.01));
   border-top: 1px solid rgba(8,120,114,0.03);
   font-style: italic;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 7em; /* approx 3 lines */
+  height: auto;
   line-height: 1.2em;
 }
 
-/* subtle headline distinction */
 .tile .tile-title {
   padding: 0.5rem 0.75rem;
   background: rgba(0,0,0,0.02);
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--primary-dark);
   text-align: right;
-  height: 7em; /* approx 3 lines */
+  margin-top: auto;
 }
 
-/* Responsive columns */
 @media (min-width: 576px) {
   .tiles-row { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (min-width: 991px) {
   .tiles-row { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Overlay styles */
+/* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.85);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   padding: 1rem;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
-.overlay.show { display: flex; }
 
-/* When overlay is open we hide the header to avoid duplicate buttons in top area.
-   Controls are shown at the right or as gallery side buttons; header remains in DOM for fallback but hidden visually.
-*/
-.overlay.show .overlay-header { display: none !important; }
+.overlay.show { display: flex; }
 
 .overlay-inner {
   position: relative;
@@ -318,29 +356,28 @@ h5 {
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 }
+
 .overlay-header {
-  display:flex;
-  justify-content:flex-end;
-  gap:0.5rem;
-  padding:0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem;
   background: #f8f9fa;
   border-bottom: 1px solid #eee;
 }
+
 .overlay-body {
-  padding: 1rem;
+  flex: 1 1 auto;
   overflow: hidden;
-  flex:1 1 auto;
   position: relative;
-}
-.overlay-body img {
-  max-width:100%;
-  height:auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Overlay controls - arrows and X styled the same (header buttons kept for fallback but hidden when overlay active) */
 .overlay-btn {
   background: var(--primary-color);
   color: white;
@@ -348,11 +385,13 @@ h5 {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   cursor: pointer;
-  font-weight:600;
+  font-weight: 600;
+  -webkit-user-select: none;
+  user-select: none;
 }
+
 .overlay-btn:active { transform: translateY(1px); }
 
-/* Use same visual style for close in header */
 .overlay-close {
   background: var(--primary-color);
   color: white;
@@ -360,134 +399,151 @@ h5 {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   cursor: pointer;
-  font-weight:600;
+  font-weight: 600;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-/* ensure images inside blog overlay not clickable */
-.overlay-body .blog-content img { pointer-events: none; }
-
-/* hide scrollbar for webkit even if it appears */
-.overlay-body::-webkit-scrollbar { width: 0; height: 0; }
-
-/* Gallery mode: remove frame, image takes most of screen, buttons overlaid left/right */
-.overlay.gallery .overlay-inner {
-  background: transparent;
-  border-radius: 0;
-  max-width: 100vw;
-  width: 100vw;
-  max-height: 100vh;
-  height: 100vh;
-  overflow: visible;
-}
-.overlay.gallery { background: rgba(0,0,0,0.9); padding: 0; }
-.overlay.gallery .overlay-body {
-  padding: 0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* CAROUSEL GALLERY */
+.carousel-overlay {
   width: 100%;
   height: 100%;
-  overflow: visible;
-}
-
-/* gallery image styles - enlarged to better use viewport */
-.gallery-image {
-  /* reduce reserved margin so image is larger */
-  max-height: calc(100vh - 20px);
-  max-width: calc(100vw - 100px);
-  width: 100vh;
-  height: auto;
-  object-fit: contain;
-  transform-origin: center center;
-  transition: transform 0.2s;
-  display: block;
-}
-
-/* gallery side buttons (big) - slightly reduced size so they don't cover much of image */
-.gallery-btn {
-  position: absolute;
-  top: 90%;
-  margin-right: 29%;
-  transform: translateY(-50%);
-  z-index: 10001;
-  background: rgba(8,120,114,0.70);
-  color: white;
-  border: none;
-  width: 64px;  /* reduced from 76 */
-  height: 64px;
-  border-radius: 12px;
-  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  position: relative;
 }
-.gallery-btn:active { transform: translateY(-50%) scale(0.98); }
 
-/* left rotate */
-.gallery-rotate { left: 30%;}
-/* right close */
-.gallery-close-right { right: 1%; }
+.carousel-overlay .carousel-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+}
 
-/* Blog mode: vertical big buttons on the right side of the content (three big buttons)
-   reduce slightly and ensure non-overlap with content by adding right padding to overlay-body inner content
-*/
-.blog-controls {
+.carousel-overlay .carousel-nav {
   position: absolute;
-  right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  display:flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 10002;
-}
-.blog-controls .control-btn {
-  width: 68px;  /* slightly smaller */
-  height: 68px;
-  border-radius: 12px;
-  background: rgba(8,120,114,1);
+  background: rgba(8,120,114,0.7);
   color: white;
   border: none;
-  font-size: 22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
 }
-.blog-controls .control-btn:active { transform: translateY(1px); }
 
-/* hide overlay header when in gallery or when we use custom blog controls */
-.overlay.hide-header .overlay-header { display:none; }
+.carousel-overlay .carousel-nav:active { 
+  background: rgba(8,120,114,0.9);
+  transform: translateY(-50%) scale(0.95);
+}
 
-/* Blog content typography in overlay: justified and improved spacing */
-.overlay-body .blog-content {
+.carousel-overlay .carousel-prev { left: 10px; }
+.carousel-overlay .carousel-next { right: 10px; }
+
+.carousel-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* BLOG CONTENT */
+.blog-overlay-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-scroll-area {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.5rem;
+  scroll-behavior: smooth;
+}
+
+.blog-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.blog-scroll-area::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.blog-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.blog-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.blog-content {
+  max-width: 720px;
+  margin: 0 auto;
   text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
   line-height: 1.75;
   word-spacing: 0.04em;
   letter-spacing: 0.01em;
-  margin-bottom: 1rem;
-  /* ensure content width is comfortable */
-  max-width: 820px; /* a bit narrower so controls don't overlap */
-  min-height: 200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: 20px; /* keep content away from right controls */
 }
 
-/* ensure blog-inner scrollbar hidden but still scrollable programmatically */
-#blog-inner {
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.blog-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
 }
-#blog-inner::-webkit-scrollbar { display: none; }
 
-/* DESKTOP LAYOUT - Split 1/3 + 2/3 */
+.blog-control-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  -webkit-user-select: none;
+  user-select: none;
+  min-width: 50px;
+}
+
+.blog-control-btn:active { 
+  transform: translateY(1px);
+  background: var(--primary-dark);
+}
+
+.blog-control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* DESKTOP LAYOUT */
 @media screen and (min-width: 991px) {
   body {
     display: flex;
@@ -517,11 +573,10 @@ h5 {
     margin: 1rem auto 2rem auto;
   }
   
-  /* Menu en colonnes de 6 */
-.desktop-sidebar .navbar-nav {
-  padding-right: 10%;
-  padding-left: 40%;
-}
+  .desktop-sidebar .navbar-nav {
+    padding-right: 10%;
+    padding-left: 40%;
+  }
   
   .desktop-sidebar .nav-item {
     width: 100%;
@@ -536,9 +591,8 @@ h5 {
     text-align: right;
     padding-right: 10%;
     padding-bottom: 1%;
-    padding-top:1%;
+    padding-top: 1%;
     border-radius: 6px;
-    ;
   }
   
   .main-container {
@@ -553,7 +607,6 @@ h5 {
   }
 }
 
-/* MOBILE - keep original styles */
 @media screen and (max-width: 990px) {
   .desktop-sidebar {
     display: none;
@@ -602,9 +655,7 @@ h5 {
     background-color: transparent !important;
   }
 }
-  
 
-/* Styles pour les formulaires dans les markdown */
 .content-section form {
   max-width: 600px;
   margin: 2rem auto;
@@ -656,31 +707,11 @@ h5 {
 .content-section form button[type="submit"]:hover {
   background-color: var(--primary-dark);
 }
-
-.content-section form .text-center {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.content-section form .text-center p {
-  margin: 0;
-  color: var(--text-light);
-  font-size: 0.85rem;
-}
-
-.content-section form .text-center a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-.content-section form .text-center a:hover {
-  text-decoration: underline;
-}
 </style>
 </head>
 <body>
 
-<!-- SIDEBAR DESKTOP (caché en mobile) -->
+<!-- SIDEBAR DESKTOP -->
 <div class="desktop-sidebar">
   <div class="carousel-container">
     <div id="demo-desktop" class="carousel slide" data-ride="carousel">
@@ -697,7 +728,7 @@ h5 {
   <ul class="navbar-nav" id="desktop-menu"></ul>
 </div>
 
-<!-- NAVBAR MOBILE (caché en desktop) -->
+<!-- NAVBAR MOBILE -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#section-1">Andrianaivo Mampianina C.</a>
@@ -712,22 +743,13 @@ h5 {
 
 <div class="main-container" id="content-container"></div>
 
-<!-- Overlay shared element -->
+<!-- OVERLAY -->
 <div id="overlay" class="overlay" aria-hidden="true">
   <div class="overlay-inner" role="dialog" aria-modal="true">
     <div class="overlay-header">
-      <!-- header buttons kept in DOM for fallback but hidden when overlay is shown (avoids duplicates) -->
-      <button id="overlay-rotate" class="overlay-btn" title="Tourner l'image">⤾</button>
-      <button id="overlay-up" class="overlay-btn" title="Haut">▲</button>
-      <button id="overlay-down" class="overlay-btn" title="Bas">▼</button>
       <button id="overlay-close" class="overlay-close" title="Fermer">✕</button>
     </div>
     <div id="overlay-body" class="overlay-body"></div>
-    <div id="blog-controls" class="blog-controls" style="display:none;">
-      <button id="blog-up" class="control-btn" title="Haut">▲</button>
-      <button id="blog-down" class="control-btn" title="Bas">▼</button>
-      <button id="blog-close" class="control-btn" title="Fermer">✕</button>
-    </div>
   </div>
 </div>
 
@@ -735,7 +757,6 @@ h5 {
 let CONFIG = {};
 let sections = [];
 
-// load config.ini
 async function loadConfig() {
   try {
     const response = await fetch('config.ini');
@@ -790,16 +811,12 @@ function extractTitleFromMarkdown(text) {
   return { title, content: contentWithoutTitle };
 }
 
-/* Transform marked HTML to tiles grouped under each h3.
-   - h4 -> blog tile (text snippet)
-   - h5 -> gallery tile (image preview)
-   Snippet now extracts textual content (ignores images) and displays tinted/italic preview.
-*/
 function transformTiles(htmlString) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlString, 'text/html');
   const body = doc.body;
   const h3s = Array.from(body.querySelectorAll('h3'));
+  
   h3s.forEach(h3 => {
     const nodesBetween = [];
     let node = h3.nextSibling;
@@ -807,16 +824,20 @@ function transformTiles(htmlString) {
       nodesBetween.push(node);
       node = node.nextSibling;
     }
+    
     const headings = nodesBetween.filter(n => n.nodeType === 1 && (n.tagName.toLowerCase() === 'h4' || n.tagName.toLowerCase() === 'h5'));
     if (headings.length === 0) return;
+    
     const tilesContainer = doc.createElement('div');
     tilesContainer.className = 'tiles-row';
+    
     for (let i = 0; i < nodesBetween.length; i++) {
       const n = nodesBetween[i];
       if (n.nodeType === 1 && (n.tagName.toLowerCase() === 'h4' || n.tagName.toLowerCase() === 'h5')) {
         const headingEl = n;
         const level = headingEl.tagName.toLowerCase();
         const titleText = headingEl.textContent || '';
+        
         const contentNodes = [];
         let j = i + 1;
         while (j < nodesBetween.length) {
@@ -825,33 +846,46 @@ function transformTiles(htmlString) {
           contentNodes.push(nj.cloneNode(true));
           j++;
         }
+        
         const tile = doc.createElement('div');
-        tile.className = 'tile';
         const type = (level === 'h5') ? 'gallery' : 'blog';
+        tile.className = `tile ${type}-tile`;
         tile.setAttribute('data-type', type);
-        const preview = doc.createElement('div');
-        preview.className = 'tile-preview';
-        const snippet = doc.createElement('div');
-        snippet.className = 'tile-snippet';
+        
         if (type === 'gallery') {
-          let foundImg = null;
+          const images = [];
           for (const cn of contentNodes) {
             const imgs = cn.querySelectorAll ? cn.querySelectorAll('img') : [];
-            if (imgs && imgs.length > 0) { foundImg = imgs[0]; break; }
+            imgs.forEach(img => images.push(img.getAttribute('src')));
           }
-          if (foundImg) {
-            const imgClone = foundImg.cloneNode(true);
-            imgClone.style.maxHeight = '100%';
-            preview.appendChild(imgClone);
-          } else {
-            const ph = doc.createElement('div');
-            ph.textContent = 'Image';
-            ph.style.color = '#888';
-            preview.appendChild(ph);
+          
+          const preview = doc.createElement('div');
+          preview.className = 'tile-preview';
+          if (images.length > 0) {
+            const firstImg = doc.createElement('img');
+            firstImg.src = images[0];
+            preview.appendChild(firstImg);
+            if (images.length > 1) {
+              const counter = doc.createElement('div');
+              counter.className = 'gallery-counter';
+              counter.textContent = `${images.length} images`;
+              preview.appendChild(counter);
+            }
           }
-          snippet.textContent = '';
+          
+          tile.appendChild(preview);
+          const tileTitle = doc.createElement('div');
+          tileTitle.className = 'tile-title';
+          tileTitle.textContent = titleText;
+          tile.appendChild(tileTitle);
+          
+          tile.dataset.type = 'gallery';
+          tile.dataset.images = JSON.stringify(images);
+          
         } else {
-          // build textual snippet ignoring images
+          const preview = doc.createElement('div');
+          preview.className = 'tile-preview';
+          
           let textAccum = '';
           for (const cn of contentNodes) {
             if (cn.nodeType === 1) {
@@ -863,30 +897,38 @@ function transformTiles(htmlString) {
             }
             if (textAccum.length > 220) break;
           }
-          if (!textAccum && contentNodes.length > 0) textAccum = contentNodes.map(n => n.textContent || '').join(' ').slice(0, 180);
+          
           const truncated = textAccum.length > 180 ? textAccum.slice(0, 177) + '...' : textAccum;
+          
+          const snippet = doc.createElement('div');
+          snippet.className = 'tile-snippet';
           snippet.textContent = truncated;
+          preview.appendChild(snippet);
+          tile.appendChild(preview);
+          
+          const tileTitle = doc.createElement('div');
+          tileTitle.className = 'tile-title';
+          tileTitle.textContent = titleText;
+          tile.appendChild(tileTitle);
+          
+          const fullContent = doc.createElement('div');
+          const titleEl = doc.createElement('h4');
+          titleEl.textContent = titleText;
+          fullContent.appendChild(titleEl);
+          contentNodes.forEach(cn => fullContent.appendChild(cn.cloneNode(true)));
+          tile.dataset.full = fullContent.innerHTML;
         }
-        const tileTitle = doc.createElement('div');
-        tileTitle.className = 'tile-title';
-        tileTitle.textContent = titleText;
-        tile.appendChild(preview);
-        if (type === 'blog') tile.appendChild(snippet);
-        tile.appendChild(tileTitle);
-        const wrapperContent = doc.createElement('div');
-        const titleWrapper = doc.createElement('h4');
-        titleWrapper.textContent = titleText;
-        wrapperContent.appendChild(titleWrapper);
-        contentNodes.forEach(cn => wrapperContent.appendChild(cn.cloneNode(true)));
-        tile.dataset.full = wrapperContent.innerHTML;
+        
         tilesContainer.appendChild(tile);
         i = j - 1;
       }
     }
+    
     nodesBetween.forEach(n => { if (n.parentNode) n.parentNode.removeChild(n); });
     if (h3.nextSibling) h3.parentNode.insertBefore(tilesContainer, h3.nextSibling);
     else h3.parentNode.appendChild(tilesContainer);
   });
+  
   return body.innerHTML;
 }
 
@@ -927,6 +969,7 @@ function generateMenu() {
     aMobile.textContent = section.label;
     liMobile.appendChild(aMobile);
     mobileMenu.appendChild(liMobile);
+    
     const liDesktop = document.createElement('li');
     liDesktop.className = 'nav-item';
     const aDesktop = document.createElement('a');
@@ -1000,9 +1043,9 @@ function initializeNavigation() {
   });
 
   window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('article[id]');
+    const articles = document.querySelectorAll('article[id]');
     const scrollPos = window.scrollY + 100;
-    sections.forEach(section => {
+    articles.forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
       const sectionId = section.getAttribute('id');
@@ -1016,173 +1059,142 @@ function initializeNavigation() {
   });
 }
 
-/* Overlay logic */
+/* OVERLAY MANAGER */
 const overlay = document.getElementById('overlay');
-const overlayInner = document.querySelector('.overlay-inner');
 const overlayBody = document.getElementById('overlay-body');
-const headerRotate = document.getElementById('overlay-rotate');
-const headerUp = document.getElementById('overlay-up');
-const headerDown = document.getElementById('overlay-down');
-const headerClose = document.getElementById('overlay-close');
-
-const blogControls = document.getElementById('blog-controls');
-const blogUp = document.getElementById('blog-up');
-const blogDown = document.getElementById('blog-down');
-const blogClose = document.getElementById('blog-close');
+const overlayClose = document.getElementById('overlay-close');
 
 let currentMode = null;
-let currentImageEl = null;
-let currentRotate = 0;
-let innerScrollEl = null;
-
-function clearGalleryInjected() {
-  const left = overlay.querySelector('.gallery-rotate');
-  const right = overlay.querySelector('.gallery-close-right');
-  if (left) left.remove();
-  if (right) right.remove();
-}
-
-/* open overlay: header is hidden via CSS (.overlay.show .overlay-header { display:none }) to avoid duplicates */
-function openOverlay(mode, htmlContent) {
-  currentMode = mode;
-  currentRotate = 0;
-  clearGalleryInjected();
-  overlay.classList.remove('gallery');
-  overlayInner.classList.remove('hide-header');
-  blogControls.style.display = 'none';
-  overlayBody.innerHTML = '';
-  innerScrollEl = null;
-
-  // prevent page scroll
-  document.body.style.overflow = 'hidden';
-  overlay.classList.add('show');
-  overlay.setAttribute('aria-hidden', 'false');
-
-  if (mode === 'gallery') {
-    overlay.classList.add('gallery');
-    overlayInner.classList.add('hide-header');
-
-    overlayBody.innerHTML = `<div style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">${htmlContent}</div>`;
-
-    currentImageEl = overlayBody.querySelector('img');
-    if (currentImageEl) {
-      currentImageEl.classList.add('gallery-image');
-      currentImageEl.style.transform = 'rotate(0deg)';
-      currentImageEl.style.maxHeight = 'calc(100vh + 20px)';
-      currentImageEl.style.maxWidth = 'calc(100vw + 100px)';
-      // append left rotate button and right close button to overlay
-      const rotateBtn = document.createElement('button');
-      rotateBtn.className = 'gallery-btn gallery-rotate';
-      rotateBtn.innerHTML = '⤾';
-      rotateBtn.title = 'Tourner';
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'gallery-btn gallery-close-right';
-      closeBtn.innerHTML = '✕';
-      closeBtn.title = 'Fermer';
-      overlay.appendChild(rotateBtn);
-      overlay.appendChild(closeBtn);
-      // events
-      rotateBtn.addEventListener('click', () => {
-        // toggle only 0/90
-        currentRotate = (currentRotate + 90) % 180; // 0 or 90
-        if (currentRotate === 90) {
-          currentImageEl.style.transform = `rotate(90deg)`;
-          currentImageEl.classList.add('rotated');
-          currentImageEl.style.maxHeight = 'calc(100vw - 20px)';
-          currentImageEl.style.maxWidth = 'calc(100vh - 100px)';
-        } else {
-          currentImageEl.style.transform = `rotate(0deg)`;
-          currentImageEl.classList.remove('rotated');
-          currentImageEl.style.maxHeight = 'calc(100vh - 20px)';
-          currentImageEl.style.maxWidth = 'calc(100vw - 100px)';
-        }
-      });
-      closeBtn.addEventListener('click', closeOverlay);
-    } else {
-      overlayBody.innerHTML = `<div style="color:white;padding:20px;">Aucune image trouvée</div>`;
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'gallery-btn gallery-close-right';
-      closeBtn.innerHTML = '✕';
-      closeBtn.title = 'Fermer';
-      overlay.appendChild(closeBtn);
-      closeBtn.addEventListener('click', closeOverlay);
-    }
-
-  } else if (mode === 'blog') {
-    overlayInner.classList.add('hide-header');
-    overlay.classList.remove('gallery');
-    overlayBody.innerHTML = htmlContent;
-    blogControls.style.display = 'flex';
-    innerScrollEl = overlayBody.querySelector('#blog-inner') || overlayBody.querySelector('.blog-content');
-    if (innerScrollEl) {
-      innerScrollEl.style.overflowY = 'auto';
-      innerScrollEl.style.maxHeight = 'calc(90vh - 60px)';
-      innerScrollEl.style.scrollBehavior = 'smooth';
-      innerScrollEl.style.WebkitOverflowScrolling = 'touch';
-      innerScrollEl.style.msOverflowStyle = 'none';
-      innerScrollEl.style.scrollbarWidth = 'none';
-    }
-    blogUp.onclick = (ev) => { ev.stopPropagation(); if (innerScrollEl) innerScrollEl.scrollBy({ top: -200, behavior: 'smooth' }); };
-    blogDown.onclick = (ev) => { ev.stopPropagation(); if (innerScrollEl) innerScrollEl.scrollBy({ top: 200, behavior: 'smooth' }); };
-    blogClose.onclick = (ev) => { ev.stopPropagation(); closeOverlay(); };
-  }
-  document.addEventListener('keydown', keyHandler);
-}
-
-function keyHandler(e) {
-  if (e.key === 'Escape') {
-    const closableModes = ['gallery', 'blog'];
-    if (closableModes.includes(currentMode)) {
-      closeOverlay();
-    }
-  }
-}
-
-
+let galleryImages = [];
+let galleryIndex = 0;
 
 function closeOverlay() {
   overlay.classList.remove('show');
   overlay.setAttribute('aria-hidden', 'true');
-  clearGalleryInjected();
   overlayBody.innerHTML = '';
-  blogControls.style.display = 'none';
   document.body.style.overflow = '';
-  currentImageEl = null;
   currentMode = null;
-  innerScrollEl = null;
-  document.removeEventListener('keydown', keyHandler);
+  galleryImages = [];
+  galleryIndex = 0;
+  document.removeEventListener('keydown', handleKeyPress);
 }
 
-// header fallback close (kept, but header is hidden when overlay active)
-if (headerClose) headerClose.addEventListener('click', closeOverlay);
+function handleKeyPress(e) {
+  if (e.key === 'Escape') {
+    closeOverlay();
+  } else if (currentMode === 'gallery') {
+    if (e.key === 'ArrowLeft') showGalleryImage(galleryIndex - 1);
+    if (e.key === 'ArrowRight') showGalleryImage(galleryIndex + 1);
+  }
+}
 
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay && currentMode === 'gallery') closeOverlay();
-});
+function openGalleryOverlay(images) {
+  currentMode = 'gallery';
+  galleryImages = images;
+  galleryIndex = 0;
+  
+  overlay.classList.add('show');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  
+  showGalleryImage(0);
+  document.addEventListener('keydown', handleKeyPress);
+}
 
-// Tiles behavior
+function showGalleryImage(index) {
+  if (index < 0 || index >= galleryImages.length) return;
+  galleryIndex = index;
+  
+  const hasNext = galleryIndex < galleryImages.length - 1;
+  const hasPrev = galleryIndex > 0;
+  
+  overlayBody.innerHTML = `
+    <div class="carousel-overlay">
+      ${hasPrev ? `<button class="carousel-nav carousel-prev" aria-label="Image précédente">‹</button>` : ''}
+      <img class="carousel-img" src="${galleryImages[galleryIndex]}" alt="Image ${galleryIndex + 1}">
+      ${hasNext ? `<button class="carousel-nav carousel-next" aria-label="Image suivante">›</button>` : ''}
+      <div class="carousel-counter">${galleryIndex + 1} / ${galleryImages.length}</div>
+    </div>
+  `;
+  
+  if (hasPrev) {
+    overlayBody.querySelector('.carousel-prev').addEventListener('click', () => showGalleryImage(galleryIndex - 1));
+  }
+  if (hasNext) {
+    overlayBody.querySelector('.carousel-next').addEventListener('click', () => showGalleryImage(galleryIndex + 1));
+  }
+}
+
+function openBlogOverlay(htmlContent, title) {
+  currentMode = 'blog';
+  
+  overlay.classList.add('show');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  
+  overlayBody.innerHTML = `
+    <div class="blog-overlay-content">
+      <div class="blog-scroll-area">
+        <div class="blog-content">
+          <h3>${title}</h3>
+          ${htmlContent}
+        </div>
+      </div>
+      <div class="blog-controls">
+        <button class="blog-control-btn" id="blog-up-btn">▲ Haut</button>
+        <button class="blog-control-btn" id="blog-down-btn">▼ Bas</button>
+      </div>
+    </div>
+  `;
+  
+  const scrollArea = overlayBody.querySelector('.blog-scroll-area');
+  const upBtn = overlayBody.querySelector('#blog-up-btn');
+  const downBtn = overlayBody.querySelector('#blog-down-btn');
+  
+  function updateButtonStates() {
+    upBtn.disabled = scrollArea.scrollTop === 0;
+    downBtn.disabled = scrollArea.scrollTop >= scrollArea.scrollHeight - scrollArea.clientHeight - 10;
+  }
+  
+  upBtn.addEventListener('click', () => {
+    scrollArea.scrollBy({ top: -200, behavior: 'smooth' });
+    setTimeout(updateButtonStates, 300);
+  });
+  
+  downBtn.addEventListener('click', () => {
+    scrollArea.scrollBy({ top: 200, behavior: 'smooth' });
+    setTimeout(updateButtonStates, 300);
+  });
+  
+  scrollArea.addEventListener('scroll', updateButtonStates);
+  updateButtonStates();
+  
+  document.addEventListener('keydown', handleKeyPress);
+}
+
 function initializeTilesBehavior() {
   document.querySelectorAll('.tile').forEach(tile => {
     tile.addEventListener('click', () => {
-      const type = tile.dataset.type || 'blog';
-      const fullHtml = tile.dataset.full || '';
+      const type = tile.dataset.type;
+      
       if (type === 'gallery') {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(fullHtml, 'text/html');
-        const img = doc.body.querySelector('img');
-        if (img) {
-          const imgHtml = `<img src="${img.getAttribute('src')}" alt="${img.getAttribute('alt')||''}">`;
-          openOverlay('gallery', imgHtml);
-        } else {
-          openOverlay('gallery', `<div style="padding:1rem;color:white;">Aucune image trouvée.</div>`);
+        const images = JSON.parse(tile.dataset.images || '[]');
+        if (images.length > 0) {
+          openGalleryOverlay(images);
         }
-      } else {
-        const contentWrapped = `<div id="blog-inner" class="blog-content">${fullHtml}</div>`;
-        openOverlay('blog', contentWrapped);
+      } else if (type === 'blog') {
+        const title = tile.querySelector('.tile-title').textContent;
+        const htmlContent = tile.dataset.full || '';
+        openBlogOverlay(htmlContent, title);
       }
     });
   });
 }
+
+overlayClose.addEventListener('click', closeOverlay);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeOverlay();
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
   const configLoaded = await loadConfig();
@@ -1196,10 +1208,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   await generateContent();
 });
 </script>
-
-<link rel="stylesheet" href="/lightbox.css">
-<script src="/lightbox.js" defer></script>
-
 
 </body>
 </html>
