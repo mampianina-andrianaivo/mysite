@@ -1,6 +1,8 @@
 ## Profil
 
-<h6>ANDRIANAIVO Mampianina Christian</h6>
+**<center>ANDRIANAIVO Mampianina Christian</center>**
 
-<h5>Doctorant à l'Université de Lille - CLERSE 8019</h5>
-<h5>Autre rattachement : UMI-Source</h5>
+---
+
+<center>Doctorant à l'Université de Lille - CLERSE 8019</center>
+<center>Autre rattachement : UMI-Source</center>
