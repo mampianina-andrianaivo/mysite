@@ -468,7 +468,7 @@ article {
   /* cocolapin ici - carousel mobile max/min width 400px */
   .carousel-mobile-only {
     max-width: 400px;
-    min-width: 400px;
+    min-width: 400;
     margin: 1rem auto;
   }
 }
@@ -581,6 +581,11 @@ textarea {
   input[type="text"], input[type="email"], textarea { font-size: 16px; }
   button[type="submit"] { font-size: 16px; }
   form .text-center { font-size: 16px; }
+  .carousel-mobile-only{
+    max-width: 300px;
+    min-width: 300px;
+    margin: 1rem auto;
+  }
 }
 
 
@@ -620,7 +625,7 @@ textarea {
 <!-- NAVBAR MOBILE -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#section-2"></a>
+    <a class="navbar-brand" href="#section-2">^</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -1028,4 +1033,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 </body>
 </html>
-
