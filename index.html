@@ -407,37 +407,6 @@ article {
 /* TABLET/MOBILE */
 @media screen and (max-width: 1400px) {
 
-body {
-  margin: 0;
-  padding: 0;
-  color: var(--text-dark);
-  line-height: 1.3;
-  font-size: 11px;
-  background: white;
-}
-
-h1 {
-  font-size: 14px;
-}
-
-h2 {
-  font-size: 14px;
-}
-
-h3 {
-  font-size: 14px;
-}
-
-
-
-.blog-tile-title {
- font-size: 14px;
-}
-
-.blog-tile-excerpt {
- font-size: 14px;
-}
-
 
 
 /*formulaires mobile*/
@@ -582,6 +551,65 @@ textarea {
   min-height: 200px;       /* hauteur minimale */
   max-height: 400px;      /* hauteur maximale */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* TABLETTES : largeur entre 600px et 1024px */
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  body { font-size: 14px; }
+  h1, h2, h3 { font-size: 16px; }
+  .blog-tile-title, .blog-tile-excerpt { font-size: 14px; }
+  input[type="text"], input[type="email"], textarea { font-size: 14px; }
+  button[type="submit"] { font-size: 14px; }
+  form .text-center { font-size: 14px; }
+}
+
+/* SMARTPHONES : largeur ≤ 599px */
+@media screen and (max-width: 599px) {
+  body { font-size: 16px; }
+  h1, h2, h3 { font-size: 18px; }
+  .blog-tile-title, .blog-tile-excerpt { font-size: 16px; }
+  input[type="text"], input[type="email"], textarea { font-size: 16px; }
+  button[type="submit"] { font-size: 16px; }
+  form .text-center { font-size: 16px; }
+}
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .blog-tile-excerpt {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .blog-tile-excerpt {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
