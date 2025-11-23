@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="google-site-verification" content="qx9CxCn-IQjPxIRLmpiZCWRm4LmdtIo4jUk_sjYSWDc" />
 <title>Andrianaivo Mampianina Christian</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -21,6 +21,38 @@
   --text-dark: #333;
   --text-light: #666;
   --bg-light: #f8f9fa;
+  --content-width: 1400px;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive;
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
+  line-height: 1.3;
+  font-size: 20px;
+  background: white;
+}
+
+/* Désactivation pinch-to-zoom */
+input, textarea {
+  touch-action: manipulation;
+}
+
+body {
+  touch-action: manipulation;
+}
+
+img { 
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .carousel-control-prev-icon,
@@ -29,123 +61,34 @@
   background-size: 50%, 50%;
   width: 30px;
   height: 30px;
-  border-radius: 100%;
-  opacity: 0.3;
+  opacity: 0.7;
 }
 
 .carousel-indicators li {
   background-color: black;
-  border-color: black;
-  opacity: 0.2;
-  width:0%;
+  opacity: 0.7;
+  width: 0%;
 }
 
 .carousel-indicators .active {
   background-color: black;
-  opacity: 0.3;
-  width:0%;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 63px;
-}
-
-html {
-  scrollbar-gutter: stable;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: var(--text-dark);
-  line-height: 1.6;
-  font-size: 16px;
-}
-
-img { 
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  border-radius: 10px;
-  width: 70%;
-  height: auto;
-  max-height: 500px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.carousel-container img {
-  margin-bottom: 0rem;
-  margin-top: 0rem;
-}
-
-.navbar {
-  background-color: var(--primary-color);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  padding: 0.5rem 1rem;
-}
-
-.navbar-brand {
-  font-weight: bold;
-  color: white !important;
-  font-size: 1.2rem;
-}
-
-.navbar-nav .nav-link {
-  color: white !important;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s;
-  font-weight: 500;
-}
-
-.desktop-sidebar .nav-link:hover {
-  background-color: rgba(0,0,0,0.2);
-}
-
-.navbar-toggler {
-  border-color: rgba(255,255,255,0.3);
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.main-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 31px 1rem 2rem 1rem;
-}
-
-.carousel-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.carousel-inner img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
+  opacity: 0.7;
+  width: 0%;
 }
 
 h2 {
   font-weight: bold;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: white;
   background-color: var(--primary-color);
   padding: 1rem;
   margin: 2rem 0 0.5rem 0;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .content-section h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
   font-weight: 600;
   margin-top: 0.8rem;
@@ -154,37 +97,10 @@ h2 {
   padding-left: 1rem;
 }
 
-h6 {
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-h5 {
-  text-align: center;
-}
-
-.profile-info {
-  text-align: center;
-  background-color: var(--bg-light);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
-
-.profile-info .subtitle {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-top: 1rem;
-}
-
 .content-section {
   background-color: white;
-  padding: 0.5rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
-  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
@@ -216,38 +132,242 @@ h5 {
   text-decoration: none;
 }
 
-.contact-info {
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 2rem;
-  background-color: var(--bg-light);
-  border-radius: 8px;
+/* BLOG TILES */
+.blog-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-/* DESKTOP LAYOUT - Split 1/3 + 2/3 */
-@media screen and (min-width: 991px) {
+.blog-tile {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  height: 200px;
+}
+
+.blog-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.blog-tile-title {
+  flex: 0 0 50%;
+  padding: 2rem;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.blog-tile-excerpt {
+  flex: 0 0 50%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  border-radius: 0;
+  min-height: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+
+  article {
+  scroll-margin-top: 30px;
+}
+
+  .blog-tile {
+    height: 180px;
+  }
+  
+  .blog-tile-title {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .blog-tile-excerpt {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel-container {
+    max-width: 100%;
+    margin: 1rem 0;
+    max-height: 300px;
+  }
+  
+  .carousel-inner img {
+    max-height: 300px;
+  }
+}
+
+/* OVERLAY BLOG */
+.blog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  z-index: 9999;
+  padding: 2rem;
+}
+
+.blog-overlay.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-overlay-content {
+  background: white;
+  border-radius: 0;
+  width: 100%;
+  max-width: 800px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.blog-overlay-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 80px 2rem 2rem;
+  text-align: justify;
+}
+
+.blog-overlay-scroll h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.blog-overlay-controls {
+  position: absolute;
+  right: 1%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+.blog-overlay-btn {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.blog-overlay-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* NAVBAR MOBILE */
+.navbar {
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: white !important;
+  font-size: 1.2rem;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s;
+  font-weight: 500;
+  display: block;
+}
+
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* DESKTOP LAYOUT */
+@media screen and (min-width: 1401px) {
+  
+article {
+  scroll-margin-top: 30px;
+}
+
   body {
     display: flex;
+    justify-content: center;
   }
   
   .navbar {
-    display: none;
+    display: none !important;
   }
   
   .carousel-mobile-only {
-    display: none;
+    display: none !important;
+  }
+  
+  .main-wrapper {
+    display: flex;
+    width: var(--content-width);
+    max-width: 100%;
+    margin-top: 0;
   }
   
   .desktop-sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
     width: 40%;
-    height: 100vh;
     background-color: var(--primary-color);
-    overflow-y: auto;
     padding: 2rem 1rem;
+    overflow-y: auto;
+    max-height: 100vh;
   }
   
   .desktop-sidebar .carousel-container {
@@ -255,11 +375,10 @@ h5 {
     margin: 1rem auto 2rem auto;
   }
   
-  /* Menu en colonnes de 6 */
-.desktop-sidebar .navbar-nav {
-  padding-right: 10%;
-  padding-left: 40%;
-}
+  .desktop-sidebar .navbar-nav {
+    padding-right: 10%;
+    padding-left: 40%;
+  }
   
   .desktop-sidebar .nav-item {
     width: 100%;
@@ -270,68 +389,53 @@ h5 {
     color: white !important;
     transition: all 0.3s;
     font-weight: 500;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     text-align: right;
     padding-right: 10%;
-    padding-bottom: 1%;
-    padding-top:1%;
-    border-radius: 6px;
-    ;
+    padding: 0.3rem 0.5rem 0.4rem 0;
+  }
+  
+  .desktop-sidebar .nav-link:hover {
+    background-color: rgba(0,0,0,0.2);
   }
   
   .main-container {
-    margin-left: 40%;
     width: 60%;
-    padding: 0rem 2rem 1rem 2rem;
-    max-width: none;
-  }
-  
-  html {
-    scroll-padding-top: 2rem;
+    padding: 0rem 2rem 2rem 2rem;
+    overflow-y: auto;
+    max-height: 100vh;
   }
 }
 
-/* MOBILE - garde l'ancien style */
-@media screen and (max-width: 990px) {
+/* TABLET/MOBILE */
+@media screen and (max-width: 1400px) {
+article {
+  scroll-margin-top: 64px;
+}
+
   .desktop-sidebar {
-    display: none;
+    display: none !important;
   }
-
-  img { 
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    border-radius: 10px;
-    width: calc(100vw - 15%);
-    height: auto;
+  
+  .navbar {
+    display: flex !important;
+  }
+  
+  .main-wrapper {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
-
+  
   .main-container {
-    padding: 55px 1rem 2rem 1rem;
-  }
-
-  .content-section {
-    padding: 0.5rem;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-    margin: 0.5rem 0 0rem 0;
+    width: 100%;
+    padding: 2rem 1rem 2rem 1rem;
   }
   
-  h6 {
-    font-size: 1.1rem;
-  }
-  
-  .contact-info {
-    font-size: 1rem;
-    padding: 1.5rem;
-  }
-
-  .content-section h3 {
-    margin-top: 0.3rem;
+  /* cocolapin ici - carousel mobile max/min width 400px */
+  .carousel-mobile-only {
+    max-width: 400px;
+    min-width: 400px;
+    margin: 1rem auto;
   }
 }
 
@@ -340,108 +444,94 @@ h5 {
     background-color: transparent !important;
   }
 }
-  
 
-/* Styles pour les formulaires dans les markdown */
-.content-section form {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: var(--bg-light);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+html, body {
+  overflow-x: hidden;
 }
 
-.content-section form input[type="text"],
-.content-section form input[type="email"],
-.content-section form textarea {
+
+
+/* Conteneur du formulaire centré */
+form {
+  max-width: 600px;   /* anciennement 400px → plus large sur desktop */
+  width: 90%;         /* prend 90% de l'écran sur petits écrans */
+  margin: 50px auto;  /* centré horizontalement avec marge verticale */
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Champs texte, email et textarea */
+input[type="text"],
+input[type="email"],
+textarea {
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-family: inherit;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
 }
 
-.content-section form input[type="text"]:focus,
-.content-section form input[type="email"]:focus,
-.content-section form textarea:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #666;
   outline: none;
-  border-color: var(--primary-color);
 }
 
-.content-section form textarea {
-  resize: vertical;
-  min-height: 150px;
-  max-height: 400px;
-}
-
-.content-section form button[type="submit"] {
-  width: 100%;
-  padding: 0.75rem 2rem;
-  background-color: var(--primary-color);
-  color: white;
+/* Bouton d'envoi */
+button[type="submit"] {
+  display: block;       /* le bouton prend sa largeur propre */
+  width: 150px;         /* largeur fixe ou % si tu veux qu’il soit responsive */
+  margin: 0 auto;       /* centre horizontalement */
+  padding: 10px 15px;
   border: none;
-  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
   font-size: 1rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
 }
 
-.content-section form button[type="submit"]:hover {
-  background-color: var(--primary-dark);
-}
 
-.content-section form .text-center {
-  margin-top: 1rem;
+
+/* Centrer le petit texte */
+form .text-center {
   text-align: center;
+  font-size: 0.8rem;
+  color: #666;
 }
 
-.content-section form .text-center p {
-  margin: 0;
-  color: var(--text-light);
-  font-size: 0.85rem;
+/* Supprimer marges inutiles */
+textarea {
+  resize: vertical; /* permet juste redimension verticale */
 }
 
-.content-section form .text-center a {
-  color: var(--primary-color);
-  text-decoration: none;
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  resize: vertical;       /* permet seulement de redimensionner verticalement */
+  min-height: 200px;       /* hauteur minimale */
+  max-height: 400px;      /* hauteur maximale */
 }
 
-.content-section form .text-center a:hover {
-  text-decoration: underline;
-}
+
 
 </style>
 </head>
 <body>
 
-
-
-<!-- SIDEBAR DESKTOP (caché en mobile) -->
-<div class="desktop-sidebar">
-  <div class="carousel-container">
-    <div id="demo-desktop" class="carousel slide" data-ride="carousel">
-      <ul class="carousel-indicators" id="desktop-indicators"></ul>
-      <div class="carousel-inner" id="desktop-carousel-inner"></div>
-      <a class="carousel-control-prev" href="#demo-desktop" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#demo-desktop" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
-  </div>
-  <ul class="navbar-nav" id="desktop-menu"></ul>
-</div>
-
-<!-- NAVBAR MOBILE (caché en desktop) -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<!-- NAVBAR MOBILE -->
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#section-2">↑</a>
+    <a class="navbar-brand" href="#section-2">^</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -451,33 +541,75 @@ h5 {
   </div>
 </nav>
 
-<div class="main-container" id="content-container"></div>
+<!-- MAIN WRAPPER: Sidebar + Contenu -->
+<div class="main-wrapper">
+  <!-- SIDEBAR DESKTOP -->
+  <div class="desktop-sidebar">
+    <div class="carousel-container">
+      <div id="demo-desktop" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators" id="desktop-indicators"></ul>
+        <div class="carousel-inner" id="desktop-carousel-inner"></div>
+        <a class="carousel-control-prev" href="#demo-desktop" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo-desktop" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+    <ul class="navbar-nav" id="desktop-menu"></ul>
+  </div>
+  
+  <!-- CONTENU -->
+  <div class="main-container" id="content-container"></div>
+</div>
+
+<!-- OVERLAY BLOG -->
+<div class="blog-overlay" id="blogOverlay">
+  <div class="blog-overlay-content">
+    <div class="blog-overlay-scroll" id="blogOverlayScroll"></div>
+    <div class="blog-overlay-controls">
+      <button class="blog-overlay-btn" id="blogOverlayUp">▲</button>
+      <button class="blog-overlay-btn" id="blogOverlayClose">&times;</button>
+      <button class="blog-overlay-btn" id="blogOverlayDown">▼</button>
+    </div>
+  </div>
+</div>
 
 <script>
+// Désactivation complète pinch-to-zoom
+document.addEventListener('touchmove', function(e) {
+  if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(e) {
+  e.preventDefault();
+}, false);
+
+document.addEventListener('wheel', function(e) {
+  if (e.ctrlKey) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
 let CONFIG = {};
 let sections = [];
+let blogPosts = [];
 
-// Chargement du fichier de configuration
 async function loadConfig() {
   try {
     const response = await fetch('config.ini');
-    if (!response.ok) {
-      throw new Error('Fichier config.ini non trouvé');
-    }
+    if (!response.ok) throw new Error('config.ini non trouvé');
     
     const text = await response.text();
     const lines = text.split('\n');
-    
-    CONFIG = {
-      images: [],
-      markdownFiles: []
-    };
-    
+    CONFIG = { images: [], markdownFiles: [] };
     let currentSection = '';
     
     lines.forEach(line => {
       line = line.trim();
-      
       if (!line || line.startsWith('#') || line.startsWith(';')) return;
       
       if (line.startsWith('[') && line.endsWith(']')) {
@@ -487,14 +619,12 @@ async function loadConfig() {
       
       const [key, ...valueParts] = line.split('=');
       const value = valueParts.join('=').trim();
-      
       if (!key || !value) return;
       
       const cleanKey = key.trim();
       
       if (currentSection === 'images') {
         if (cleanKey === 'range') {
-          // Format: 1-9 ou 1-20
           const match = value.match(/(\d+)-(\d+)/);
           if (match) {
             const start = parseInt(match[1]);
@@ -506,20 +636,18 @@ async function loadConfig() {
         }
       } else if (currentSection === 'files') {
         if (cleanKey === 'list') {
-          // Format: profil, galerie, contact
-          CONFIG.markdownFiles = value.split(',').map(name => name.trim()).filter(name => name);
+          CONFIG.markdownFiles = value.split(',').map(n => n.trim()).filter(n => n);
         }
       }
     });
     
     return true;
   } catch (error) {
-    console.error('Erreur:', error);
+    console.error('Erreur config:', error);
     return false;
   }
 }
 
-// Génération du carousel desktop
 function generateDesktopCarousel() {
   const indicators = document.getElementById('desktop-indicators');
   const carouselInner = document.getElementById('desktop-carousel-inner');
@@ -538,7 +666,6 @@ function generateDesktopCarousel() {
   });
 }
 
-// Extraire le titre depuis le contenu markdown
 function extractTitleFromMarkdown(text) {
   const match = text.match(/^##\s+(.+)$/m);
   const title = match ? match[1].trim() : 'Sans titre';
@@ -546,68 +673,119 @@ function extractTitleFromMarkdown(text) {
   return { title, content: contentWithoutTitle };
 }
 
-// Chargement d'un fichier Markdown
-async function loadMarkdownFile(fileName, index) {
-  const fullFileName = `${fileName}.md`;
+function extractFirstImage(htmlContent) {
+  const regex = /<img[^>]+src="([^">]+)"/;
+  const match = htmlContent.match(regex);
+  return match ? match[1] : '';
+}
+
+function extractExcerpt(htmlContent) {
+  const div = document.createElement('div');
+  div.innerHTML = htmlContent;
+  const text = div.textContent || div.innerText;
+  const trimmed = text.substring(0, 180).trim();
   
+  // Ajouter "..." si le texte était coupé
+  if (text.length > 180) {
+    return trimmed.replace(/\s+\S*$/, '') + '...';
+  }
+  return trimmed;
+}
+
+function parseBlogPosts(markdownContent) {
+  const posts = [];
+  const lines = markdownContent.split('\n');
+  let currentPost = null;
+  let contentLines = [];
+  let postsContent = [];
+  
+  lines.forEach((line, idx) => {
+    if (line.startsWith('#### ')) {
+      if (currentPost) {
+        const htmlContent = marked.parse(contentLines.join('\n'));
+        posts.push({
+          title: currentPost,
+          content: htmlContent,
+          excerpt: extractExcerpt(htmlContent)
+        });
+        postsContent.push(idx);
+      }
+      currentPost = line.replace(/^#### /, '').trim();
+      contentLines = [];
+      postsContent.push(idx);
+    } else if (currentPost) {
+      contentLines.push(line);
+      postsContent.push(idx);
+    }
+  });
+  
+  if (currentPost && contentLines.length > 0) {
+    const htmlContent = marked.parse(contentLines.join('\n'));
+    posts.push({
+      title: currentPost,
+      content: htmlContent,
+      excerpt: extractExcerpt(htmlContent)
+    });
+  }
+  
+  // Retirer les lignes contenant les posts
+  const withoutPosts = lines.filter((_, idx) => !postsContent.includes(idx)).join('\n').trim();
+  return { posts, contentWithoutPosts: withoutPosts };
+}
+
+async function loadMarkdownFile(fileName, index) {
   try {
-    const response = await fetch(fullFileName);
+    const response = await fetch(`${fileName}.md`);
     if (!response.ok) {
-      console.warn(`Fichier ${fullFileName} non trouvé`);
+      console.warn(`${fileName}.md non trouvé`);
       return null;
     }
     
     const text = await response.text();
     const { title, content } = extractTitleFromMarkdown(text);
-    const htmlContent = marked.parse(content);
+    const { posts, contentWithoutPosts } = parseBlogPosts(content);
+    const htmlContent = marked.parse(contentWithoutPosts);
+    
+    if (posts.length > 0) {
+      blogPosts.push(...posts);
+    }
     
     return {
       id: `section-${index + 1}`,
       label: title,
-      content: htmlContent
+      content: htmlContent,
+      posts: posts
     };
   } catch (error) {
-    console.error(`Erreur lors du chargement de ${fullFileName}:`, error);
+    console.error(`Erreur ${fileName}.md:`, error);
     return null;
   }
 }
 
-// Chargement de tous les fichiers markdown
 async function loadAllMarkdownFiles() {
-  const promises = CONFIG.markdownFiles.map((fileName, index) => 
-    loadMarkdownFile(fileName, index)
-  );
-  
+  const promises = CONFIG.markdownFiles.map((n, i) => loadMarkdownFile(n, i));
   const results = await Promise.all(promises);
-  sections = results.filter(section => section !== null);
-  
-  return sections;
+  sections = results.filter(s => s !== null);
 }
 
-// Génération du menu
 function generateMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
   const desktopMenu = document.getElementById('desktop-menu');
   
-  mobileMenu.innerHTML = '';
-  desktopMenu.innerHTML = '';
-  
-  sections.forEach((section, index) => {
-    // Menu mobile
+  sections.forEach((section) => {
     const liMobile = document.createElement('li');
     liMobile.className = 'nav-item';
     const aMobile = document.createElement('a');
-    aMobile.className = 'nav-link' + (index === 0 ? ' active' : '');
+    aMobile.className = 'nav-link';
     aMobile.href = '#' + section.id;
     aMobile.textContent = section.label;
     liMobile.appendChild(aMobile);
     mobileMenu.appendChild(liMobile);
     
-    // Menu desktop
     const liDesktop = document.createElement('li');
     liDesktop.className = 'nav-item';
     const aDesktop = document.createElement('a');
-    aDesktop.className = 'nav-link' + (index === 0 ? ' active' : '');
+    aDesktop.className = 'nav-link';
     aDesktop.href = '#' + section.id;
     aDesktop.textContent = section.label;
     liDesktop.appendChild(aDesktop);
@@ -615,16 +793,15 @@ function generateMenu() {
   });
 }
 
-// Génération de la première section avec carousel
 function generateFirstSection() {
-  const images = CONFIG.images.map((img, index) => `
-    <div class="carousel-item ${index === 0 ? 'active' : ''}">
-      <img src="${img}" alt="Photo ${index + 1}">
+  const images = CONFIG.images.map((img, i) => `
+    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+      <img src="${img}" alt="Photo ${i + 1}">
     </div>
   `).join('');
   
-  const indicators = CONFIG.images.map((_, index) => `
-    <li data-target="#demo" data-slide-to="${index}" class="${index === 0 ? 'active' : ''}"></li>
+  const indicators = CONFIG.images.map((_, i) => `
+    <li data-target="#demo" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>
   `).join('');
   
   return `
@@ -632,54 +809,68 @@ function generateFirstSection() {
       <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">${indicators}</ul>
         <div class="carousel-inner">${images}</div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+        <a class="carousel-control-next" href="#demo" data-slide="next"><span class="carousel-control-next-icon"></span></a>
       </div>
     </div>
   `;
 }
 
-// Génération du contenu complet
-async function generateContent() {
-  const container = document.getElementById('content-container');
+function generateBlogTiles() {
+  if (blogPosts.length === 0) return '';
   
-  await loadAllMarkdownFiles();
-  generateMenu();
+  const tiles = blogPosts.map((post, idx) => `
+    <div class="blog-tile" data-post-index="${idx}">
+      <div class="blog-tile-title">${post.title}</div>
+      <div class="blog-tile-excerpt">${post.excerpt}</div>
+    </div>
+  `).join('');
   
-  let html = '';
-  
-  sections.forEach((section, index) => {
-    const firstSectionExtra = index === 0 ? generateFirstSection() : '';
-    
-    html += `
-      <article id="${section.id}">
-        <h2>${section.label}</h2>
-        ${firstSectionExtra}
-        <div class="content-section">${section.content}</div>
-      </article>
-    `;
-  });
-  
-  container.innerHTML = html;
-  initializeNavigation();
+  return `<div class="blog-tiles">${tiles}</div>`;
 }
 
-// Initialisation de la navigation
+function initializeBlogTiles() {
+  document.querySelectorAll('.blog-tile').forEach(tile => {
+    tile.addEventListener('click', function() {
+      const idx = parseInt(this.getAttribute('data-post-index'));
+      const post = blogPosts[idx];
+      
+      if (post) {
+        document.getElementById('blogOverlayScroll').innerHTML = `
+          <h2>${post.title}</h2>
+          <div>${post.content}</div>
+        `;
+        document.getElementById('blogOverlay').classList.add('active');
+      }
+    });
+  });
+  
+  const scrollArea = document.getElementById('blogOverlayScroll');
+  
+  document.getElementById('blogOverlayUp').addEventListener('click', function() {
+    scrollArea.scrollTop -= 100;
+  });
+  
+  document.getElementById('blogOverlayDown').addEventListener('click', function() {
+    scrollArea.scrollTop += 100;
+  });
+  
+  document.getElementById('blogOverlayClose').addEventListener('click', function() {
+    document.getElementById('blogOverlay').classList.remove('active');
+  });
+}
+
 function initializeNavigation() {
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      
       const href = this.getAttribute('href');
-      document.querySelectorAll(`a[href="${href}"]`).forEach(l => l.classList.add('active'));
-      
       const target = document.querySelector(href);
+      
       if (target) {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.querySelectorAll(`a[href="${href}"]`).forEach(l => l.classList.add('active'));
+        
         target.scrollIntoView({ behavior: 'smooth' });
         
         const navbar = document.querySelector('.navbar-collapse');
@@ -689,34 +880,53 @@ function initializeNavigation() {
       }
     });
   });
-
-  window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('article[id]');
-    const scrollPos = window.scrollY + 100;
-    
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
-      
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        document.querySelectorAll('.nav-link').forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  });
 }
 
-// Initialisation au chargement
+async function generateContent() {
+  const container = document.getElementById('content-container');
+  
+  await loadAllMarkdownFiles(); // Charge toutes les sections et leurs posts
+  generateMenu(); // Génère le menu mobile + desktop
+  
+  let html = '';
+  
+  sections.forEach((section, index) => {
+    // Carousel uniquement pour la première section
+    const carousel = index === 0 ? generateFirstSection() : '';
+    
+    // Tiles uniquement pour les posts de cette section
+    let tiles = '';
+    if (section.posts && section.posts.length > 0) {
+      const tilesHTML = section.posts.map((post) => `
+        <div class="blog-tile" data-post-index="${blogPosts.indexOf(post)}">
+          <div class="blog-tile-title">${post.title}</div>
+          <div class="blog-tile-excerpt">${post.excerpt}</div>
+        </div>
+      `).join('');
+      tiles = `<div class="blog-tiles">${tilesHTML}</div>`;
+    }
+    
+    html += `
+      <article id="${section.id}">
+        <h2>${section.label}</h2>
+        ${carousel}
+        <div class="content-section">${section.content}</div>
+        ${tiles}
+      </article>
+    `;
+  });
+  
+  container.innerHTML = html;
+  
+  initializeNavigation(); // Lien smooth scroll
+  initializeBlogTiles();  // Overlay clic sur les tiles
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
-  const configLoaded = await loadConfig();
-  if (!configLoaded) {
-    document.getElementById('content-container').innerHTML = 
-      '<div class="alert alert-danger">Erreur : Fichier config.ini non trouvé.</div>';
+  const ok = await loadConfig();
+  if (!ok) {
+    document.getElementById('content-container').innerHTML = '<div class="alert alert-danger">Erreur : Fichier config.ini non trouvé.</div>';
     return;
   }
   
@@ -725,13 +935,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 </script>
 
-
 </body>
-
 </html>
-
-
-
-
-
-
