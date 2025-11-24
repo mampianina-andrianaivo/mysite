@@ -621,8 +621,22 @@ h2 {
 
 h3 {
   color:#ffae00 !important;
-
 }
+
+
+/* Premier h3 après h2 */
+.content-section h3:first-of-type {
+  margin-top: clamp(0px, 0vw, 0px);
+}
+
+/* Tous les autres h3 */
+.content-section h3 + h3,
+.content-section h3:not(:first-of-type) {
+  margin-top: clamp(30px, 13vw, 50px);
+}
+
+
+
 
 .navbar-nav .nav-link{
   color:#ffae00 !important;
@@ -666,6 +680,19 @@ strong {
   color:#6ec493 !important;
 }
 
+
+
+
+.content-section h3:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.content-section:empty {
+  padding: 0;
+}
 
 
 
@@ -1091,6 +1118,7 @@ fetch('codex.ini')
     document.getElementById('myForm').action = `${formId}`;
   })
   .catch(err => console.error(err));
+
 
 
 
