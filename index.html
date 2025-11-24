@@ -828,11 +828,11 @@ function extractExcerpt(htmlContent) {
   const div = document.createElement('div');
   div.innerHTML = htmlContent;
   const text = div.textContent || div.innerText;
-  const trimmed = text.substring(0, 180).trim();
+  const trimmed = text.substring(0, 100).trim();
   
   // Ajouter "..." si le texte était coupé
-  if (text.length > 180) {
-    return trimmed.replace(/\s+\S*$/, '') + '...';
+  if (text.length > 100) {
+    return trimmed.replace(/\s+\S*$/, '') + '[...]';
   }
   return trimmed;
 }
@@ -975,12 +975,17 @@ function generateBlogTiles() {
 }
 
 function initializeBlogTiles() {
+  let lastScrollY = 0; // sauvegarde du scroll avant overlay
+
   document.querySelectorAll('.blog-tile').forEach(tile => {
     tile.addEventListener('click', function() {
       const idx = parseInt(this.getAttribute('data-post-index'));
       const post = blogPosts[idx];
       
       if (post) {
+        // Sauvegarde la position du scroll
+        lastScrollY = window.scrollY || window.pageYOffset;
+
         document.getElementById('blogOverlayScroll').innerHTML = `
           <h2>${post.title}</h2>
           <div>${post.content}</div>
@@ -990,18 +995,17 @@ function initializeBlogTiles() {
       }
     });
   });
-  
-  const scrollArea = document.getElementById('blogOverlayScroll');
 
+  document.getElementById('blogOverlayClose').addEventListener('click', function() {
+    const overlay = document.getElementById('blogOverlay');
+    overlay.classList.remove('active');
+    document.body.classList.remove('no-scroll');
 
-
-document.getElementById('blogOverlayClose').addEventListener('click', function() {
-  const overlay = document.getElementById('blogOverlay');
-  overlay.classList.remove('active');
-  document.body.classList.remove('no-scroll');
-});
-
+    // Restaurer la position du scroll
+    window.scrollTo(0, lastScrollY);
+  });
 }
+
 
 function initializeNavigation() {
   document.querySelectorAll('.nav-link').forEach(link => {
