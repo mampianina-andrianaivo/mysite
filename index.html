@@ -733,6 +733,27 @@ strong {
 
 
 
+#blogOverlay .blog-overlay-scroll iframe {
+  width: clamp(75% , 50vw, 600px);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 0;
+}
+
+/* Mobile : iframe prend 100% de la largeur */
+@media screen and (max-width: 800px) {
+  #blogOverlay .blog-overlay-scroll iframe {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
 </style>
 </head>
 <body>
