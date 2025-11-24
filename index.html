@@ -698,9 +698,37 @@ strong {
 
   text-align: justify;
   text-justify: inter-word;
-  text-justify: inter-character;
-  word-spacing: -5px;
+
+  letter-spacing: -1.6px;
   hyphens: auto;
+}
+
+
+#blogOverlay,
+#blogOverlay * {
+  user-select: none;        /* Empêche la sélection */
+  -webkit-user-select: none; /* Safari/Chrome */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE/Edge */
+}
+
+#blogOverlay .blog-overlay-scroll img {
+  width: clamp(450px, 50%, 600px); /* desktop : 50% largeur avec min/max */
+  height: auto;                    /* hauteur proportionnelle */
+  object-fit: contain;
+}
+
+/* Mobile : image prend toute la largeur */
+@media screen and (max-width: 800px) {
+  #blogOverlay .blog-overlay-scroll img {
+    width: 100%;
+  }
+}
+
+
+#blogOverlay img {
+  display: block;
+  margin: 0 auto;
 }
 
 
