@@ -748,14 +748,6 @@ strong {
 }
 
 
-body.no-scroll {
-  overflow: hidden !important;
-  height: 100% !important;
-  position: fixed !important;
-  width: 100% !important;
-  top: 0 !important;
-}
-
 
 </style>
 </head>
@@ -825,8 +817,7 @@ document.addEventListener('wheel', function(e) {
 let CONFIG = {};
 let sections = [];
 let blogPosts = [];
-let lastScrollY = 0;
-let scrollLocked = false;
+let lastScrollY = 0; // sauvegarde du scroll avant overlay
 
 async function loadConfig() {
   try {
@@ -915,6 +906,7 @@ function extractExcerpt(htmlContent) {
   const text = div.textContent || div.innerText;
   const trimmed = text.substring(0, 100).trim();
   
+  // Ajouter "..." si le texte était coupé
   if (text.length > 100) {
     return trimmed.replace(/\s+\S*$/, '') + '[...]';
   }
@@ -957,6 +949,7 @@ function parseBlogPosts(markdownContent) {
     });
   }
   
+  // Retirer les lignes contenant les posts
   const withoutPosts = lines.filter((_, idx) => !postsContent.includes(idx)).join('\n').trim();
   return { posts, contentWithoutPosts: withoutPosts };
 }
@@ -1057,26 +1050,6 @@ function generateBlogTiles() {
   return `<div class="blog-tiles">${tiles}</div>`;
 }
 
-function closeOverlay() {
-  const overlay = document.getElementById('blogOverlay');
-  overlay.classList.remove('active');
-  
-  // Reset des styles
-  document.documentElement.style.overflow = '';
-  document.documentElement.style.height = '';
-  document.body.style.overflow = '';
-  document.body.style.height = '';
-  document.body.style.position = '';
-  document.body.style.width = '';
-  document.body.style.top = '';
-  
-  // Restore scroll position
-  setTimeout(() => {
-    window.scrollTo(0, lastScrollY);
-    scrollLocked = false;
-  }, 0);
-}
-
 function initializeBlogTiles() {
   document.querySelectorAll('.blog-tile').forEach(tile => {
     tile.addEventListener('click', function() {
@@ -1086,7 +1059,6 @@ function initializeBlogTiles() {
       if (post) {
         // Sauvegarde la position du scroll
         lastScrollY = window.scrollY || window.pageYOffset;
-        scrollLocked = true;
 
         document.getElementById('blogOverlayScroll').innerHTML = `
           <h2>
@@ -1095,20 +1067,16 @@ function initializeBlogTiles() {
           </h2>
           <div>${post.content}</div>
         `;
-        
-        // Application des styles pour bloquer le scroll
-        document.documentElement.style.overflow = 'hidden';
-        document.documentElement.style.height = '100%';
-        document.body.style.overflow = 'hidden';
-        document.body.style.height = '100%';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = '0';
-        
         document.getElementById('blogOverlay').classList.add('active');
+        document.body.classList.add('no-scroll');
 
         // Réattacher l'event listener au nouveau bouton
-        document.getElementById('blogOverlayClose').addEventListener('click', closeOverlay);
+        document.getElementById('blogOverlayClose').addEventListener('click', function() {
+          const overlay = document.getElementById('blogOverlay');
+          overlay.classList.remove('active');
+          document.body.classList.remove('no-scroll');
+          window.scrollTo(0, lastScrollY);
+        });
       }
     });
   });
@@ -1139,14 +1107,16 @@ function initializeNavigation() {
 async function generateContent() {
   const container = document.getElementById('content-container');
   
-  await loadAllMarkdownFiles();
-  generateMenu();
+  await loadAllMarkdownFiles(); // Charge toutes les sections et leurs posts
+  generateMenu(); // Génère le menu mobile + desktop
   
   let html = '';
   
   sections.forEach((section, index) => {
+    // Carousel uniquement pour la première section
     const carousel = index === 0 ? generateFirstSection() : '';
     
+    // Tiles uniquement pour les posts de cette section
     let tiles = '';
     if (section.posts && section.posts.length > 0) {
       const tilesHTML = section.posts.map((post) => `
@@ -1170,22 +1140,9 @@ async function generateContent() {
   
   container.innerHTML = html;
   
-  initializeNavigation();
-  initializeBlogTiles();
+  initializeNavigation(); // Lien smooth scroll
+  initializeBlogTiles();  // Overlay clic sur les tiles
 }
-
-// Empêcher le scroll physique pendant l'overlay
-document.addEventListener('touchmove', function(e) {
-  if (scrollLocked || document.getElementById('blogOverlay').classList.contains('active')) {
-    e.preventDefault();
-  }
-}, { passive: false });
-
-document.addEventListener('wheel', function(e) {
-  if (scrollLocked || document.getElementById('blogOverlay').classList.contains('active')) {
-    e.preventDefault();
-  }
-}, { passive: true });
 
 document.addEventListener('DOMContentLoaded', async () => {
   const ok = await loadConfig();
@@ -1202,7 +1159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 fetch('codex.ini')
   .then(response => response.text())
   .then(data => {
-    const formId = data.split('=')[1].trim();
+    const formId = data.split('=')[1].trim(); // FORM_ID=xxxx
     document.getElementById('myForm').action = `${formId}`;
   })
   .catch(err => console.error(err));
