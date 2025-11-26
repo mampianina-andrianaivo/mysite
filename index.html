@@ -963,6 +963,114 @@ strong {
 }
 
 
+.blog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 9999;
+  padding: 0;
+}
+
+.blog-overlay.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-overlay-content {
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 0;
+  width: 100%;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 800px) {
+  .blog-overlay-content {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .blog-overlay-content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+.blog-overlay-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.8rem 20px 20px 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  letter-spacing: -1.6px;
+  hyphens: auto;
+  
+  /* Smooth scrolling */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.blog-overlay-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.blog-overlay-scroll::-webkit-scrollbar-thumb {
+  background-color: #ffae00;
+  border-radius: 4px;
+}
+
+.blog-overlay-scroll::-webkit-scrollbar-track {
+  background-color: rgba(255, 174, 0, 0.1);
+}
+
+.blog-overlay-scroll h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 20px;
+  position: sticky;
+  top: 0;
+  gap: 30px;
+  background: rgba(15, 15, 15, 0.95);
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.blog-overlay-btn {
+  width: 50px;
+  height: 50px;
+  background: #333;
+  color: #ffae00;
+  border: 1px solid #444;
+  font-size: 1.5rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.blog-overlay-btn:hover {
+  background: #444;
+  border-color: #ffae00;
+}
+
+.blog-overlay-btn:active {
+  background: #555;
+}
+
+
 body {
   transition: none !important;
 }
@@ -1272,6 +1380,10 @@ function generateBlogTiles() {
 // GESTION COMPLÈTE DE L'OVERLAY ET DU DÉFILEMENT
 // ============================================================================
 
+// ============================================================================
+// GESTION COMPLÈTE DE L'OVERLAY ET DU DÉFILEMENT
+// ============================================================================
+
 class OverlayManager {
   constructor() {
     this.overlay = null;
@@ -1285,25 +1397,29 @@ class OverlayManager {
     this.overlay = document.getElementById('blogOverlay');
     this.overlayScroll = document.getElementById('blogOverlayScroll');
     
-    // Empêcher le défilement sur l'overlay lui-même (pas sur le contenu)
+    // Gérer le toucher sur tout l'overlay
     this.overlay.addEventListener('touchmove', (e) => {
-      // Ne bloquer que si l'overlay est ouvert et le toucher n'est PAS sur le contenu scrollable
-      if (this.isOpen && !this.isEventInsideScrollableArea(e)) {
+      if (this.isOpen) {
+        // Permettre le défilement du contenu scrollable
+        if (this.overlayScroll.scrollHeight > this.overlayScroll.clientHeight) {
+          // Il y a du contenu à scroller, on laisse faire
+          return;
+        }
+        // Sinon, bloquer le défilement par défaut
         e.preventDefault();
       }
     }, { passive: false });
 
-    // Empêcher le wheel sur l'overlay
+    // Gérer la wheel sur tout l'overlay
     this.overlay.addEventListener('wheel', (e) => {
-      if (this.isOpen && !this.isEventInsideScrollableArea(e)) {
+      if (this.isOpen) {
+        // Permettre le défilement du contenu scrollable
+        if (this.overlayScroll.scrollHeight > this.overlayScroll.clientHeight) {
+          return;
+        }
         e.preventDefault();
       }
     }, { passive: false });
-  }
-
-  isEventInsideScrollableArea(e) {
-    // Vérifier si l'événement provient du conteneur de défilement
-    return this.overlayScroll && this.overlayScroll.contains(e.target);
   }
 
   open(content) {
