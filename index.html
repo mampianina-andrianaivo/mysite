@@ -961,6 +961,37 @@ strong {
 }
 
 
+.main-container {
+  overflow-y: auto;
+  height: 100dvh;     /* CORRECTION */
+}
+
+
+.blog-overlay-content {
+  height: 100dvh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .main-container {
+    min-height: 0;  /* Stop la croissance infinie */
+  }
+}
+
+body {
+  display: block;
+}
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
 
 
 
