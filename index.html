@@ -962,14 +962,6 @@ strong {
   background: #555;
 }
 
-html, body {
-  overflow-y: auto !important;
-}
-
-.desktop-sidebar {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
 
 
 
@@ -1027,13 +1019,11 @@ body {
 
 <script>
 // Désactivation complète pinch-to-zoom
-// empêcher uniquement le pinch-zoom
 document.addEventListener('touchmove', function(e) {
-  if (e.scale !== undefined && e.scale !== 1) {
+  if (e.touches.length > 1) {
     e.preventDefault();
   }
 }, { passive: false });
-
 
 document.addEventListener('gesturestart', function(e) {
   e.preventDefault();
@@ -1373,14 +1363,9 @@ class OverlayManager {
 
   lockBodyScroll() {
     // Bloquer simplement le défilement
-    if (window.innerWidth < 800) {
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
-}
-
   }
-
-  
 
   unlockBodyScroll() {
     // Débloquer
