@@ -103,16 +103,13 @@ img {
     color: #ffae00 !important;
     font-weight: 500;
     font-size: clamp(15px, 2vw, 25px);
-    text-align: center;
+    text-align: right;
     padding: 0.5rem 0.25rem;
     display: block;
-    width: 100%;
+    width: 90%;
     transition: all 0.3s;
   }
 
-  .desktop-sidebar .nav-link:hover {
-    background-color: rgba(255, 174, 0, 0.1);
-  }
 
   /* CONTENU - margin-left pour laisser place à la sidebar */
   .main-wrapper {
@@ -145,7 +142,7 @@ img {
     z-index: 1000;
     background-color: #111;
     padding: 0.5rem 1rem;
-    height: 64px;
+
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 
@@ -161,7 +158,7 @@ img {
 
   .main-container {
     width: 100%;
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 80px 1rem 2rem 1rem;
   }
 }
 
@@ -181,7 +178,7 @@ img {
     z-index: 1000;
     background-color: #111;
     padding: 0.5rem 1rem;
-    height: 64px;
+
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 
@@ -197,7 +194,7 @@ img {
 
   .main-container {
     width: 100%;
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 80px 1rem 2rem 1rem;
   }
 }
 
@@ -367,7 +364,7 @@ strong {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.8rem 20px 20px 20px;
+  padding: 3rem 20px 20px 20px;
   text-align: justify;
   letter-spacing: -1.6px;
   hyphens: auto;
@@ -391,12 +388,19 @@ strong {
   top: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   padding: 1rem 20px;
   gap: 30px;
   background: rgba(15, 15, 15, 0.95);
   z-index: 100;
   margin: 0;
+}
+
+.blog-overlay-scroll > div {
+padding-left: 5%;
+padding-right: 5%;
+padding-top: 2%;
+padding-bottom: 2%;
 }
 
 .blog-overlay-btn {
@@ -430,13 +434,91 @@ strong {
 
 .navbar-nav .nav-link {
   color: #ffae00 !important;
-  padding: 0.75rem 1rem;
+  padding: 0.25rem 1rem;
   transition: all 0.3s;
 }
 
 .navbar-toggler {
   border-color: rgba(255, 255, 255, 0.3);
 }
+
+
+    body {
+        padding-top: 0px !important;
+    }
+
+
+form {
+  width: 90%;            /* plus large que précédemment */
+  max-width: 90%;        /* pas de pixel */
+  margin: 0 auto;
+  padding: 2%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+button {
+  width: 100%;
+  padding: 2%;
+  margin: 2% 0;
+  box-sizing: border-box;
+  border: 1px solid #ffae00;  /* bordure orange */
+  font-size: 1rem;
+  background-color: rgba(35, 35, 35, 0.14); /* couleur de fond transparente foncée */
+  color: #ffae00;               /* texte orange */
+  outline: none;                /* supprime le contour par défaut du navigateur */
+}
+
+/* Quand on hover ou focus, garder le style identique */
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="email"]:hover,
+input[type="email"]:focus,
+textarea:hover,
+textarea:focus,
+button:hover,
+button:focus {
+  border: 1px solid #ffae00;  /* toujours orange */
+  background-color: rgba(35, 35, 35, 0.14);
+  color: #ffae00;
+  outline: none;               /* pas de contour bleu ou blanc */
+  box-shadow: none;            /* supprime l’ombre par défaut sur focus */
+}
+
+
+
+textarea {
+  min-height: 250px;
+  max-height: 450px;
+  resize: vertical; /* peut s’étirer entre les deux limites */
+}
+
+
+
+xd {
+  display: block;
+  margin-top: 1%;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+zzz {
+  font-size: clamp(20px, 3vw, 40px);
+}
+
+/* Fond semi-transparent quand le menu est ouvert */
+.navbar-collapse {
+  background-color: rgba(17, 17, 17); /* noir avec opacité 95% */
+
+.navbar-collapse {
+  background-color: rgba(17, 17, 17, 0.95); /* noir avec opacité 95% */
+}
+
+
 
 </style>
 </head>
@@ -716,7 +798,7 @@ function generateFirstSection() {
   
   return `
     <div class="carousel-container carousel-mobile-only">
-      <div id="demo" class="carousel slide" data-ride="carousel">
+      <div id="demo" class="carousel slide" data-ride="carousel" style="width:70%;margin:auto;">
         <ul class="carousel-indicators">${indicators}</ul>
         <div class="carousel-inner">${images}</div>
         <a class="carousel-control-prev" href="#demo" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
@@ -878,26 +960,38 @@ function initializeBlogTiles() {
 }
 
 function initializeNavigation() {
+  const wrapper = document.querySelector('.main-wrapper');
+  const offsetMobile = 65;
+  const offsetDesktop = 35;
+
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const href = this.getAttribute('href');
       const target = document.querySelector(href);
-      
-      if (target) {
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.querySelectorAll(`a[href="${href}"]`).forEach(l => l.classList.add('active'));
-        
-        target.scrollIntoView({ behavior: 'smooth' });
-        
-        const navbar = document.querySelector('.navbar-collapse');
-        if (navbar && navbar.classList.contains('show')) {
-          navbar.classList.remove('show');
-        }
+
+      if (!target) return;
+
+      // Classes actives
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      document.querySelectorAll(`a[href="${href}"]`).forEach(l => l.classList.add('active'));
+
+      if (window.innerWidth >= 1024) {
+        // Scroll desktop dans main-wrapper
+        wrapper.scrollTo({ top: target.offsetTop - offsetDesktop, behavior: 'smooth' });
+      } else {
+        // Scroll mobile/tablet sur body
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offsetMobile -50, behavior: 'smooth' });
       }
+
+      // Fermer menu mobile si ouvert
+      const navbar = document.querySelector('.navbar-collapse');
+      if (navbar && navbar.classList.contains('show')) navbar.classList.remove('show');
     });
   });
 }
+
+
 
 async function generateContent() {
   const container = document.getElementById('content-container');
@@ -958,6 +1052,9 @@ fetch('codex.ini')
     document.getElementById('myForm').action = `${formId}`;
   })
   .catch(err => console.error(err));
+
+
+
 
 </script>
 
