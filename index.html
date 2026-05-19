@@ -877,14 +877,16 @@ function generateFirstSection() {
 }
 
 // ============================================================================
-// GESTION OVERLAY — toutes corrections incluses
+// GESTION OVERLAY — avec History API pour le bouton retour navigateur
 // ============================================================================
 class OverlayManager {
   constructor() {
     this.overlay = null;
     this.overlayScroll = null;
     this.isOpen = false;
-    this.savedScrollTop = 0; // CORRECTION E : sauvegarde position scroll
+    this.savedScrollTop = 0;
+    this._scrollTarget = '';
+    this._onPopState = null;
     this._onKeyDown = null;
     this._onOverlayClick = null;
     this.init();
@@ -913,7 +915,7 @@ class OverlayManager {
     if (this.isOpen) return;
     this.isOpen = true;
 
-    // Détecter la source du scroll selon le contexte
+    // Détecter la source du scroll selon le contexte (desktop vs mobile)
     const mainContainer = document.querySelector('.main-container');
     const isMobile = window.innerWidth <= 800;
 
@@ -929,33 +931,75 @@ class OverlayManager {
     this.overlay.classList.add('active');
     this.lockBodyScroll();
 
+    // Crée une fausse entrée dans l'historique pour intercepter le bouton retour
+    history.pushState({ overlay: true }, '');
+
+    // Écoute le bouton retour navigateur
+    this._onPopState = (e) => {
+      if (this.isOpen) {
+        // Le navigateur a déjà consommé l'entrée pushState, on ferme sans go(-1)
+        this._closeWithoutHistory();
+      }
+    };
+    window.addEventListener('popstate', this._onPopState);
+
+    // Bouton fermeture dans l'overlay
     const closeBtn = document.getElementById('blogOverlayClose');
     if (closeBtn) closeBtn.addEventListener('click', () => this.close());
 
+    // Fermer au clic sur le fond
     this._onOverlayClick = (e) => {
       if (e.target === this.overlay) this.close();
     };
     this.overlay.addEventListener('click', this._onOverlayClick);
 
+    // Fermer à Escape
     this._onKeyDown = (e) => {
       if (e.key === 'Escape' && this.isOpen) this.close();
     };
     document.addEventListener('keydown', this._onKeyDown);
   }
 
+  // Fermeture via bouton ↵ ou Escape : on recule dans l'historique,
+  // ce qui déclenche popstate → _closeWithoutHistory()
   close() {
+    if (!this.isOpen) return;
+    // Retirer le listener popstate avant go(-1) pour ne pas boucler
+    if (this._onPopState) {
+      window.removeEventListener('popstate', this._onPopState);
+      this._onPopState = null;
+    }
+    history.go(-1);
+    // go(-1) est asynchrone, on attend le popstate ou on ferme directement
+    // Pour fiabilité on ferme directement ici aussi
+    this._closeWithoutHistory();
+  }
+
+  // Fermeture sans toucher à l'historique (appelée par popstate ou par close())
+  _closeWithoutHistory() {
     if (!this.isOpen) return;
     this.isOpen = false;
     this.overlay.classList.remove('active');
     this.unlockBodyScroll();
+
+    // Vider le contenu pour stopper les iframes/vidéos
     this.overlayScroll.innerHTML = '';
 
-    if (this._onOverlayClick)
+    // Nettoyer tous les listeners
+    if (this._onOverlayClick) {
       this.overlay.removeEventListener('click', this._onOverlayClick);
-    if (this._onKeyDown)
+      this._onOverlayClick = null;
+    }
+    if (this._onKeyDown) {
       document.removeEventListener('keydown', this._onKeyDown);
+      this._onKeyDown = null;
+    }
+    if (this._onPopState) {
+      window.removeEventListener('popstate', this._onPopState);
+      this._onPopState = null;
+    }
 
-    // Restaurer la position selon la cible sauvegardée
+    // Restaurer la position de scroll
     requestAnimationFrame(() => {
       if (this._scrollTarget === 'window') {
         window.scrollTo(0, this.savedScrollTop);
