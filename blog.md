@@ -16,7 +16,7 @@ Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des
 
 Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des analyses multidimensionnelles (correspondances multiples et classifications hiérarchiques) sur une base de données collectée dans deux communes de la région malgache d’Itasy. Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et organisations) et trois interpersonnels. Le réseau bimodal est plus associé à une déclaration d’état viable.
 
-#### Le réseau bimodal est plus associé à une déclaration d’état viable
+#### Andrianaivo
 
 <strong>Article : 24/11/2025 | </strong>
 
@@ -30,7 +30,7 @@ Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des
 
 Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des analyses multidimensionnelles (correspondances multiples et classifications hiérarchiques) sur une base de données collectée dans deux communes de la région malgache d’Itasy. Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et organisations) et trois interpersonnels. Le réseau bimodal est plus associé à une déclaration d’état viable.
 
-#### Le réseau bimodal est plus associé à une déclaration d’état viable
+#### Mampianina
 
 <strong>Article : 24/11/2025 | </strong>
 
@@ -44,7 +44,7 @@ Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des
 
 Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des analyses multidimensionnelles (correspondances multiples et classifications hiérarchiques) sur une base de données collectée dans deux communes de la région malgache d’Itasy. Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et organisations) et trois interpersonnels. Le réseau bimodal est plus associé à une déclaration d’état viable.
 
-#### Le réseau bimodal est plus associé à une déclaration d’état viable
+#### Christian
 
 <strong>Article : 24/11/2025 | </strong>
 
