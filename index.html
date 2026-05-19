@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,23 +12,18 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 
-
-
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --primary-color: #111;        /* gris presque noir */
-  --primary-dark: #000;         /* noir */
-  --text-dark: #e6e6e6;         /* texte clair */
-  --text-light: #bbbbbb;        /* texte gris clair */
-  --bg-light: #1a1a1a;          /* fond gris très foncé */
+  --primary-color: #111;
+  --primary-dark: #000;
+  --text-dark: #e6e6e6;
+  --text-light: #bbbbbb;
+  --bg-light: #1a1a1a;
   --content-width: 1400px;
 }
-
-
-
 
 html {
   scroll-behavior: smooth;
@@ -45,7 +39,6 @@ body {
   background: #0f0f0f;
 }
 
-/* Désactivation pinch-to-zoom */
 input, textarea {
   touch-action: manipulation;
 }
@@ -265,17 +258,6 @@ article {
   }
 }
 
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.blog-overlay-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.blog-overlay-scroll > h2 { display: flex; justify-content: space-between; align-items: center; padding-right: 60px; position: relative; } .blog-overlay-btn { width: 50px; height: 50px; background: #333; color: white; border: none; font-size: 1.5rem; cursor: pointer; flex-shrink: 0; } .blog-overlay-btn:hover { background: #444; }
-
 /* NAVBAR MOBILE */
 .navbar {
   background-color: #111;
@@ -477,49 +459,24 @@ textarea {
 }
 
 .blog-overlay-scroll h2 {
-    padding-top: 1.8rem;
-}
-
-
-
-
-
-
-
-.blog-overlay-scroll h2 {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 
 .blog-overlay-scroll {
   overflow-y: auto;
-
-  /* Masquer la scrollbar sur Chrome, Edge et Safari */
-  scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;    /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .blog-overlay-scroll::-webkit-scrollbar {
-  display: none;               /* Chrome, Safari, Edge */
+  display: none;
 }
 
 body {
   font-family: "Consolas", "Menlo", "Courier New", monospace;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* TABLETTES : largeur entre 600px et 1024px */
+/* TABLETTES */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   body { font-size: 14px; }
   h1, h2, h3 { font-size: 16px; }
@@ -529,7 +486,7 @@ body {
   form .text-center { font-size: 14px; }
 }
 
-/* SMARTPHONES : largeur ≤ 599px */
+/* SMARTPHONES */
 @media screen and (max-width: 599px) {
   body { font-size: 14px; }
   h1, h2, h3 { font-size: 16px; }
@@ -544,11 +501,6 @@ body {
   }
 }
 
-
-
-
-
-
 @media screen and (max-width: 1024px) {
   .blog-tile-excerpt {
     font-size: 11px;
@@ -561,21 +513,23 @@ body {
   }
 }
 
+/* =============================================
+   CORRECTION 1 : overflow sans !important
+   pour permettre au lockBodyScroll de fonctionner
+   ============================================= */
+html, body {
+  overflow-y: auto;
+}
 
-
-
-
-
-
-
-
-
-body.no-scroll {
+/* =============================================
+   CORRECTION 1 (suite) : classe overlay-open
+   avec !important pour bloquer le scroll Firefox
+   ============================================= */
+body.overlay-open,
+html.overlay-open {
   overflow: hidden !important;
   height: 100vh !important;
 }
-
-
 
 /* Chrome, Safari, Edge */
 ::-webkit-scrollbar { width: 12px; }
@@ -588,17 +542,14 @@ body {
   scrollbar-width: thin;
 }
 
-
 h2 {
   color:#ffae00 !important;
-      border: 1px solid #444;
+  border: 1px solid #444;
 }
 
 h3 {
   color:#ffae00 !important;
 }
-
-
 
 /* Premier h3 après h2 */
 .content-section h3:first-of-type {
@@ -611,19 +562,13 @@ h3 {
   margin-top: clamp(30px, 13vw, 50px);
 }
 
-
-
-
 .navbar-nav .nav-link{
   color:#ffae00 !important;
 }
 
-
 .blog-tile-title {
   color:#6ec493 !important;
 }
-
-
 
 .blog-overlay-btn{
   color:#ffae00 !important;
@@ -634,7 +579,6 @@ h3 {
   color:#ffae00 !important;
   border: 1px solid #444;
 }
-
 
 .blog-tile {
   border: 1px solid #444;
@@ -648,16 +592,9 @@ img{
   border: 2px solid #444;
 }
 
-zzz {
-  font-size: clamp(20px, 5vw, 30px);
-}
-
 strong {
   color:#6ec493 !important;
 }
-
-
-
 
 .content-section h3:empty {
   display: none;
@@ -665,53 +602,44 @@ strong {
   padding: 0;
 }
 
-
 .content-section:empty {
   padding: 0;
 }
-
 
 .blog-overlay-scroll {
   flex: 1;
   overflow-y: auto;
   padding: 0.8rem 20px 20px 20px;
-
   text-align: justify;
   text-justify: inter-word;
-
   letter-spacing: -1.6px;
   hyphens: auto;
 }
 
-
 #blogOverlay,
 #blogOverlay * {
-  user-select: none;        /* Empêche la sélection */
-  -webkit-user-select: none; /* Safari/Chrome */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE/Edge */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #blogOverlay .blog-overlay-scroll img {
-  width: clamp(450px, 50%, 600px); /* desktop : 50% largeur avec min/max */
-  height: auto;                    /* hauteur proportionnelle */
+  width: clamp(450px, 50%, 600px);
+  height: auto;
   object-fit: contain;
 }
 
-/* Mobile : image prend toute la largeur */
 @media screen and (max-width: 800px) {
   #blogOverlay .blog-overlay-scroll img {
     width: 100%;
   }
 }
 
-
 #blogOverlay img {
   display: block;
   margin: 0 auto;
 }
-
-
 
 #blogOverlay .blog-overlay-scroll iframe {
   width: clamp(75% , 50vw, 600px);
@@ -722,13 +650,11 @@ strong {
   border: 0;
 }
 
-/* Mobile : iframe prend 100% de la largeur */
 @media screen and (max-width: 800px) {
   #blogOverlay .blog-overlay-scroll iframe {
     width: 100%;
   }
 }
-
 
 .blog-overlay-scroll > h2 {
   display: flex;
@@ -736,7 +662,7 @@ strong {
   align-items: center;
   padding: 1rem 20px;
   position: relative;
-  gap: 30px;  /* Espace entre titre et bouton */
+  gap: 30px;
 }
 
 .blog-overlay-btn {
@@ -747,7 +673,7 @@ strong {
   border: 1px solid #444;
   font-size: 1.5rem;
   cursor: pointer;
-  flex-shrink: 0;    /* Important : empêche le bouton de se réduire */
+  flex-shrink: 0;
 }
 
 .blog-overlay {
@@ -804,8 +730,6 @@ strong {
   text-justify: inter-word;
   letter-spacing: -1.6px;
   hyphens: auto;
-  
-  /* Smooth scrolling */
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
@@ -855,118 +779,6 @@ strong {
 
 .blog-overlay-btn:active {
   background: #555;
-}
-
-
-.blog-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  z-index: 9999;
-  padding: 0;
-}
-
-.blog-overlay.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.blog-overlay-content {
-  background: rgba(15, 15, 15, 0.95);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 0;
-  width: 100%;
-  color: white;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-}
-
-@media screen and (min-width: 800px) {
-  .blog-overlay-content {
-    padding-left: 20%;
-    padding-right: 20%;
-  }
-}
-
-@media screen and (max-width: 799px) {
-  .blog-overlay-content {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-}
-
-.blog-overlay-scroll {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0rem 20px 20px 20px;
-  text-align: justify;
-  text-justify: inter-word;
-  letter-spacing: -1.6px;
-  hyphens: auto;
-  
-  /* Smooth scrolling */
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-.blog-overlay-scroll::-webkit-scrollbar {
-  width: 8px;
-}
-
-.blog-overlay-scroll::-webkit-scrollbar-thumb {
-  background-color: #ffae00;
-  border-radius: 4px;
-}
-
-.blog-overlay-scroll::-webkit-scrollbar-track {
-  background-color: rgba(255, 174, 0, 0.1);
-}
-
-.blog-overlay-scroll h2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 20px;
-  position: sticky;
-  top: 0;
-  gap: 30px;
-  background: rgba(15, 15, 15, 0.95);
-  z-index: 100;
-  flex-shrink: 0;
-}
-
-.blog-overlay-btn {
-  width: 50px;
-  height: 50px;
-  background: #333;
-  color: #ffae00;
-  border: 1px solid #444;
-  font-size: 1.5rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all 0.3s;
-}
-
-.blog-overlay-btn:hover {
-  background: #444;
-  border-color: #ffae00;
-}
-
-.blog-overlay-btn:active {
-  background: #555;
-}
-
-html, body {
-  overflow-y: auto !important;
 }
 
 .desktop-sidebar {
@@ -974,11 +786,30 @@ html, body {
   -webkit-overflow-scrolling: touch;
 }
 
-
-
-
 body {
   transition: none !important;
+}
+
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+@media screen and (max-width: 799px) {
+  html, body {
+    overflow-y: auto;
+    height: auto;
+  }
+}
+
+.main-wrapper {
+  height: 100%;
 }
 
 </style>
@@ -1025,7 +856,7 @@ body {
 <div class="blog-overlay" id="blogOverlay">
   <div class="blog-overlay-content">
     <div class="blog-overlay-scroll" id="blogOverlayScroll"></div>
-    
+  </div>
 </div>
 
 <script>
@@ -1049,7 +880,6 @@ document.addEventListener('wheel', function(e) {
 let CONFIG = {};
 let sections = [];
 let blogPosts = [];
-let lastScrollY = 0; // sauvegarde du scroll avant overlay
 
 async function loadConfig() {
   try {
@@ -1137,8 +967,6 @@ function extractExcerpt(htmlContent) {
   div.innerHTML = htmlContent;
   const text = div.textContent || div.innerText;
   const trimmed = text.substring(0, 100).trim();
-  
-  // Ajouter "..." si le texte était coupé
   if (text.length > 100) {
     return trimmed.replace(/\s+\S*$/, '') + '[...]';
   }
@@ -1181,7 +1009,6 @@ function parseBlogPosts(markdownContent) {
     });
   }
   
-  // Retirer les lignes contenant les posts
   const withoutPosts = lines.filter((_, idx) => !postsContent.includes(idx)).join('\n').trim();
   return { posts, contentWithoutPosts: withoutPosts };
 }
@@ -1269,25 +1096,8 @@ function generateFirstSection() {
   `;
 }
 
-function generateBlogTiles() {
-  if (blogPosts.length === 0) return '';
-  
-  const tiles = blogPosts.map((post, idx) => `
-    <div class="blog-tile" data-post-index="${idx}">
-      <div class="blog-tile-title">${post.title}</div>
-      <div class="blog-tile-excerpt">${post.excerpt}</div>
-    </div>
-  `).join('');
-  
-  return `<div class="blog-tiles">${tiles}</div>`;
-}
-
 // ============================================================================
-// GESTION COMPLÈTE DE L'OVERLAY ET DU DÉFILEMENT
-// ============================================================================
-
-// ============================================================================
-// GESTION COMPLÈTE DE L'OVERLAY ET DU DÉFILEMENT
+// GESTION OVERLAY
 // ============================================================================
 
 class OverlayManager {
@@ -1295,7 +1105,6 @@ class OverlayManager {
     this.overlay = null;
     this.overlayScroll = null;
     this.isOpen = false;
-    this.scrollPosition = 0;
     this.init();
   }
 
@@ -1303,23 +1112,17 @@ class OverlayManager {
     this.overlay = document.getElementById('blogOverlay');
     this.overlayScroll = document.getElementById('blogOverlayScroll');
     
-    // Gérer le toucher sur tout l'overlay
     this.overlay.addEventListener('touchmove', (e) => {
       if (this.isOpen) {
-        // Permettre le défilement du contenu scrollable
         if (this.overlayScroll.scrollHeight > this.overlayScroll.clientHeight) {
-          // Il y a du contenu à scroller, on laisse faire
           return;
         }
-        // Sinon, bloquer le défilement par défaut
         e.preventDefault();
       }
     }, { passive: false });
 
-    // Gérer la wheel sur tout l'overlay
     this.overlay.addEventListener('wheel', (e) => {
       if (this.isOpen) {
-        // Permettre le défilement du contenu scrollable
         if (this.overlayScroll.scrollHeight > this.overlayScroll.clientHeight) {
           return;
         }
@@ -1332,31 +1135,22 @@ class OverlayManager {
     if (this.isOpen) return;
 
     this.isOpen = true;
-    this.scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-    // Remplir le contenu
     this.overlayScroll.innerHTML = content;
-
-    // Afficher l'overlay
     this.overlay.classList.add('active');
-
-    // Bloquer le défilement du body de façon plus robuste
     this.lockBodyScroll();
 
-    // Réattacher les événements de fermeture
     const closeBtn = document.getElementById('blogOverlayClose');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.close());
     }
 
-    // Fermer au clic sur le fond (pas sur le contenu)
     this.overlay.addEventListener('click', (e) => {
       if (e.target === this.overlay) {
         this.close();
       }
     });
 
-    // Fermer à la touche Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isOpen) {
         this.close();
@@ -1370,33 +1164,24 @@ class OverlayManager {
     this.isOpen = false;
     this.overlay.classList.remove('active');
     this.unlockBodyScroll();
+
+    // CORRECTION 2 : vider le contenu pour stopper les vidéos iframe
+    this.overlayScroll.innerHTML = '';
   }
 
+  // CORRECTION 1 : utiliser des classes CSS avec !important
+  // pour que Firefox respecte bien le blocage du scroll
   lockBodyScroll() {
-    // Bloquer simplement le défilement
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+    document.body.classList.add('overlay-open');
+    document.documentElement.classList.add('overlay-open');
   }
 
   unlockBodyScroll() {
-    // Débloquer
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-  }
-
-  getScrollbarWidth() {
-    // Calculer la largeur de la scrollbar
-    const div = document.createElement('div');
-    div.style.visibility = 'hidden';
-    div.style.overflow = 'scroll';
-    document.body.appendChild(div);
-    const width = div.offsetWidth - div.clientWidth;
-    div.parentNode.removeChild(div);
-    return width;
+    document.body.classList.remove('overlay-open');
+    document.documentElement.classList.remove('overlay-open');
   }
 }
 
-// Instancier le gestionnaire
 const overlayManager = new OverlayManager();
 
 function initializeBlogTiles() {
@@ -1445,16 +1230,14 @@ function initializeNavigation() {
 async function generateContent() {
   const container = document.getElementById('content-container');
   
-  await loadAllMarkdownFiles(); // Charge toutes les sections et leurs posts
-  generateMenu(); // Génère le menu mobile + desktop
+  await loadAllMarkdownFiles();
+  generateMenu();
   
   let html = '';
   
   sections.forEach((section, index) => {
-    // Carousel uniquement pour la première section
     const carousel = index === 0 ? generateFirstSection() : '';
     
-    // Tiles uniquement pour les posts de cette section
     let tiles = '';
     if (section.posts && section.posts.length > 0) {
       const tilesHTML = section.posts.map((post) => `
@@ -1478,8 +1261,8 @@ async function generateContent() {
   
   container.innerHTML = html;
   
-  initializeNavigation(); // Lien smooth scroll
-  initializeBlogTiles();  // Overlay clic sur les tiles
+  initializeNavigation();
+  initializeBlogTiles();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -1493,12 +1276,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   await generateContent();
 });
 
-// Fonction pour récupérer codex.ini
+// Récupérer codex.ini
 fetch('codex.ini')
   .then(response => response.text())
   .then(data => {
-    const formId = data.split('=')[1].trim(); // FORM_ID=xxxx
-    document.getElementById('myForm').action = `${formId}`;
+    const formId = data.split('=')[1].trim();
+    const form = document.getElementById('myForm');
+    if (form) form.action = `${formId}`;
   })
   .catch(err => console.error(err));
 
@@ -1506,4 +1290,3 @@ fetch('codex.ini')
 
 </body>
 </html>
-
