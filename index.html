@@ -913,25 +913,30 @@ class OverlayManager {
     if (this.isOpen) return;
     this.isOpen = true;
 
-    // CORRECTION E : sauvegarder la position scroll avant d'ouvrir
+    // Détecter la source du scroll selon le contexte
     const mainContainer = document.querySelector('.main-container');
-    this.savedScrollTop = mainContainer ? mainContainer.scrollTop : window.scrollY;
+    const isMobile = window.innerWidth <= 800;
+
+    if (isMobile || !mainContainer) {
+      this.savedScrollTop = window.scrollY || window.pageYOffset;
+      this._scrollTarget = 'window';
+    } else {
+      this.savedScrollTop = mainContainer.scrollTop;
+      this._scrollTarget = 'container';
+    }
 
     this.overlayScroll.innerHTML = content;
     this.overlay.classList.add('active');
     this.lockBodyScroll();
 
-    // Bouton fermeture
     const closeBtn = document.getElementById('blogOverlayClose');
     if (closeBtn) closeBtn.addEventListener('click', () => this.close());
 
-    // Fermer au clic sur le fond (listener propre, retiré à la fermeture)
     this._onOverlayClick = (e) => {
       if (e.target === this.overlay) this.close();
     };
     this.overlay.addEventListener('click', this._onOverlayClick);
 
-    // Fermer à Escape (listener propre, retiré à la fermeture)
     this._onKeyDown = (e) => {
       if (e.key === 'Escape' && this.isOpen) this.close();
     };
@@ -943,21 +948,20 @@ class OverlayManager {
     this.isOpen = false;
     this.overlay.classList.remove('active');
     this.unlockBodyScroll();
-
-    // CORRECTION D : vider le contenu pour stopper les vidéos iframe
     this.overlayScroll.innerHTML = '';
 
-    // Retirer les listeners
-    if (this._onOverlayClick) this.overlay.removeEventListener('click', this._onOverlayClick);
-    if (this._onKeyDown) document.removeEventListener('keydown', this._onKeyDown);
+    if (this._onOverlayClick)
+      this.overlay.removeEventListener('click', this._onOverlayClick);
+    if (this._onKeyDown)
+      document.removeEventListener('keydown', this._onKeyDown);
 
-    // CORRECTION E : restaurer la position scroll
+    // Restaurer la position selon la cible sauvegardée
     requestAnimationFrame(() => {
-      const mainContainer = document.querySelector('.main-container');
-      if (mainContainer) {
-        mainContainer.scrollTop = this.savedScrollTop;
-      } else {
+      if (this._scrollTarget === 'window') {
         window.scrollTo(0, this.savedScrollTop);
+      } else {
+        const mainContainer = document.querySelector('.main-container');
+        if (mainContainer) mainContainer.scrollTop = this.savedScrollTop;
       }
     });
   }
