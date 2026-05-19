@@ -10,8 +10,8 @@
 <input type="text" name="honeypot" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
 
   <button type="submit">Envoyer</button>
-<center>(Powered by <a rel="nofollow" href="https://un-static.com">Un-static Forms</a>)</center>
+<center>(Powered by Un-static Forms</a>)</center>
   </div>
-  <center>2025 Andrianaivo</div></center>
+  <center>2026 Andrianaivo</div></center>
 </form>
 
