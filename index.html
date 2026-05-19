@@ -430,8 +430,10 @@ body { transition: none !important; }
       </div>
     </div>
     <ul class="navbar-nav" id="desktop-menu"></ul>
+    
   </div>
   <div class="main-container" id="content-container"></div>
+
 </div>
 
 <!-- OVERLAY BLOG -->
@@ -879,6 +881,9 @@ fetch('codex.ini')
   })
   .catch(err => console.error(err));
 
+document.getElementById("year").textContent = new Date().getFullYear();
+
 </script>
+
 </body>
 </html>

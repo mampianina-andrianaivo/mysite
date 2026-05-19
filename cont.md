@@ -12,7 +12,6 @@
   <button type="submit">Envoyer</button>
 <center>(Powered by <a rel="nofollow" href="https://un-static.com">Un-static Forms</a>)</center>
   </div>
-  <center>2026 Andrianaivo</center>
+  <center>2025 Andrianaivo</div></center>
 </form>
 
----
