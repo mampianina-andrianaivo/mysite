@@ -12,13 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 
-/* =============================================
-DEBUT
-   ============================================= */
-
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
   --primary-color: #111;
@@ -29,10 +23,6 @@ DEBUT
   --content-width: 1400px;
 }
 
-/* =============================================
-   CORRECTION A : bloquer overflow global sur
-   desktop pour supprimer scrollbar Firefox grise
-   ============================================= */
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
@@ -51,48 +41,24 @@ body {
   height: 100%;
 }
 
-/* Sur mobile, scroll global autorisé */
 @media screen and (max-width: 799px) {
-  html, body {
-    overflow-y: auto;
-    height: auto;
-  }
+  html, body { overflow-y: auto; height: auto; }
 }
 
-input, textarea {
-  touch-action: manipulation;
-}
+input, textarea { touch-action: manipulation; }
+body { touch-action: manipulation; }
 
-body {
-  touch-action: manipulation;
-}
-
-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+img { width: 100%; height: auto; display: block; }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: black;
   background-size: 30%, 30%;
-  width: 30px;
-  height: 30px;
-  opacity: 0.7;
+  width: 30px; height: 30px; opacity: 0.7;
 }
 
-.carousel-indicators li {
-  background-color: white;
-  opacity: 0.7;
-  width: 0%;
-}
-
-.carousel-indicators .active {
-  background-color: white;
-  opacity: 0.7;
-  width: 0%;
-}
+.carousel-indicators li { background-color: white; opacity: 0.7; width: 0%; }
+.carousel-indicators .active { background-color: white; opacity: 0.7; width: 0%; }
 
 h2 {
   font-weight: bold;
@@ -123,137 +89,55 @@ h2 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
-.content-section p {
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.content-section ul {
-  padding-left: 1.5rem;
-}
-
-.content-section ul li {
-  margin-bottom: 0.5rem;
-}
-
-.content-section strong {
-  color: #6ec493 !important;
-}
-
-.content-section a {
-  color: #ddd;
-  word-break: break-all;
-  transition: color 0.3s;
-}
-
-.content-section a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-strong {
-  color: #6ec493 !important;
-}
-
-img {
-  border: 2px solid #444;
-}
-
-.content-section h3:empty {
-  display: none;
-  margin: 0;
-  padding: 0;
-}
-
-.content-section:empty {
-  padding: 0;
-}
-
-/* Premier h3 après h2 */
-.content-section h3:first-of-type {
-  margin-top: clamp(0px, 0vw, 0px);
-}
-
-/* Tous les autres h3 */
+.content-section p { text-align: left; margin-bottom: 1rem; }
+.content-section ul { padding-left: 1.5rem; }
+.content-section ul li { margin-bottom: 0.5rem; }
+.content-section strong { color: #6ec493 !important; }
+.content-section a { color: #ddd; word-break: break-all; transition: color 0.3s; }
+.content-section a:hover { color: #fff; text-decoration: none; }
+strong { color: #6ec493 !important; }
+img { border: 2px solid #444; }
+.content-section h3:empty { display: none; margin: 0; padding: 0; }
+.content-section:empty { padding: 0; }
+.content-section h3:first-of-type { margin-top: clamp(0px, 0vw, 0px); }
 .content-section h3 + h3,
-.content-section h3:not(:first-of-type) {
-  margin-top: clamp(30px, 13vw, 50px);
-}
+.content-section h3:not(:first-of-type) { margin-top: clamp(30px, 13vw, 50px); }
 
 /* BLOG TILES */
-.blog-tiles {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
+.blog-tiles { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
 
 .blog-tile {
-  display: flex;
-  flex-direction: row;
+  display: flex; flex-direction: row;
   background: #1a1a1a;
   box-shadow: 0 4px 15px rgba(0,0,0,0.6);
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  overflow: hidden;
-  height: 200px;
+  overflow: hidden; height: 200px;
   border: 1px solid #444;
 }
 
-.blog-tile:hover {
-  border-color: #ffae00;
-}
+.blog-tile:hover { border-color: #ffae00; }
 
 .blog-tile-title {
-  flex: 0 0 50%;
-  padding: 2rem;
-  background: #222;
+  flex: 0 0 50%; padding: 2rem; background: #222;
   color: #6ec493 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; font-size: 1.4rem; font-weight: 600;
 }
 
 .blog-tile-excerpt {
-  flex: 0 0 50%;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: #ccc;
-  line-height: 1.5;
-  overflow: hidden;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  flex: 0 0 50%; padding: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: #ccc; line-height: 1.5; overflow: hidden;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical;
 }
 
-/* TABLETS */
 @media screen and (max-width: 1400px) {
   article { scroll-margin-top: 30px; }
-
   .blog-tile { height: 180px; }
-
-  .blog-tile-title {
-    padding: 1.5rem;
-    font-size: 1.2rem;
-  }
-
-  .blog-tile-excerpt {
-    padding: 1.5rem;
-    line-height: 1.3;
-    -webkit-line-clamp: 2;
-  }
-
-  .carousel-container {
-    max-width: 100%;
-    margin: 1rem 0;
-    max-height: 300px;
-  }
-
+  .blog-tile-title { padding: 1.5rem; font-size: 1.2rem; }
+  .blog-tile-excerpt { padding: 1.5rem; line-height: 1.3; -webkit-line-clamp: 2; }
+  .carousel-container { max-width: 100%; margin: 1rem 0; max-height: 300px; }
   .carousel-inner img { max-height: 300px; }
 }
 
@@ -261,200 +145,153 @@ img {
   .blog-tile-excerpt { font-size: 11px; }
 }
 
-/* =============================================
-   CORRECTION B : overlay utilise 100dvh
-   pour gérer la barre d'adresse mobile rétractable
-   ============================================= */
+/* OVERLAY BLOG */
 .blog-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  z-index: 9999;
-  padding: 0;
-  height: 100dvh;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  display: none; z-index: 9999; padding: 0; height: 100dvh;
 }
 
 .blog-overlay.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
 .blog-overlay-content {
   background: rgba(15, 15, 15, 0.95);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border-radius: 0;
-  width: 100%;
-  color: white;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
+  border-radius: 0; width: 100%; color: white;
+  height: 100dvh; display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
 }
 
 @media screen and (min-width: 800px) {
-  .blog-overlay-content {
-    padding-left: 20%;
-    padding-right: 20%;
-  }
+  .blog-overlay-content { padding-left: 20%; padding-right: 20%; }
 }
 
 @media screen and (max-width: 799px) {
-  .blog-overlay-content {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
+  .blog-overlay-content { padding-left: 5%; padding-right: 5%; }
 }
+
+/* =============================================
+   TRANSITION OVERLAY — blur gaussien au retour
+   ============================================= */
+#transitionOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9998; /* juste sous le blog overlay */
+  pointer-events: none;
+  opacity: 0;
+  /* flou + assombrir légèrement */
+  backdrop-filter: blur(18px) brightness(0.6);
+  -webkit-backdrop-filter: blur(18px) brightness(0.6);
+  background: rgba(0, 0, 0, 0.35);
+  transition: opacity 0s; /* contrôlé par JS */
+}
+
+#transitionOverlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#transitionOverlay.fading-out {
+  opacity: 0;
+  transition: opacity 0.55s ease-out;
+}
+
+/* Spinner centré dans l'overlay de transition */
+#transitionOverlay .spinner-wrap {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+}
+
+#transitionOverlay .spinner {
+  width: 36px; height: 36px;
+  border: 3px solid rgba(255, 174, 0, 0.2);
+  border-top-color: #ffae00;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+#transitionOverlay .spinner-label {
+  color: rgba(255, 174, 0, 0.7);
+  font-family: "Consolas", "Menlo", "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* NAVBAR MOBILE */
 .navbar {
   background-color: #111;
   box-shadow: 0 2px 10px rgba(0,0,0,0.7);
-  padding: 0.5rem 1rem;
-  display: none;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  padding: 0.5rem 1rem; display: none;
+  position: fixed; top: 0; width: 100%; z-index: 1000;
 }
 
-.navbar-brand {
-  font-weight: bold;
-  color: white !important;
-  font-size: 1.2rem;
-}
-
-.navbar-nav .nav-link {
-  color: #ffae00 !important;
-  padding: 0.75rem 1rem;
-  transition: all 0.3s;
-  font-weight: 500;
-}
-
-.navbar-toggler {
-  border-color: rgba(255,255,255,0.3);
-}
+.navbar-brand { font-weight: bold; color: white !important; font-size: 1.2rem; }
+.navbar-nav .nav-link { color: #ffae00 !important; padding: 0.75rem 1rem; transition: all 0.3s; font-weight: 500; }
+.navbar-toggler { border-color: rgba(255,255,255,0.3); }
 
 /* DESKTOP LAYOUT */
 @media screen and (min-width: 800px) {
   article { scroll-margin-top: 30px; }
-
-  body {
-    display: flex;
-    justify-content: center;
-  }
-
+  body { display: flex; justify-content: center; }
   .navbar { display: none !important; }
-
   .carousel-mobile-only { display: none !important; }
 
   .main-wrapper {
-    display: flex;
-    width: var(--content-width);
-    max-width: 100%;
-    margin-top: 0;
-    height: 100%;
+    display: flex; width: var(--content-width);
+    max-width: 100%; margin-top: 0; height: 100%;
   }
 
   .desktop-sidebar {
-    width: 40%;
-    background-color: #111;
-    padding: 2rem 1rem;
-    overflow-y: scroll;
-    max-height: 100vh;
+    width: 40%; background-color: #111; padding: 2rem 1rem;
+    overflow-y: scroll; max-height: 100vh;
     -webkit-overflow-scrolling: touch;
   }
 
-  .desktop-sidebar .carousel-container {
-    max-width: 90%;
-    margin: 1rem auto 2rem auto;
-  }
-
-  .desktop-sidebar .navbar-nav {
-    padding-right: 10%;
-    padding-left: 40%;
-  }
-
+  .desktop-sidebar .carousel-container { max-width: 90%; margin: 1rem auto 2rem auto; }
+  .desktop-sidebar .navbar-nav { padding-right: 10%; padding-left: 40%; }
   .desktop-sidebar .nav-item { width: 100%; }
-
   .desktop-sidebar .nav-link {
-    color: #ffae00 !important;
-    font-weight: 500;
-    font-size: 1.3rem;
-    text-align: right;
-    padding: 0.3rem 0.5rem 0.4rem 0;
-    transition: all 0.3s;
+    color: #ffae00 !important; font-weight: 500; font-size: 1.3rem;
+    text-align: right; padding: 0.3rem 0.5rem 0.4rem 0; transition: all 0.3s;
   }
-
-  .desktop-sidebar .nav-link:hover {
-    background-color: rgba(255,255,255,0.05);
-  }
+  .desktop-sidebar .nav-link:hover { background-color: rgba(255,255,255,0.05); }
 
   .main-container {
-    width: 60%;
-    padding: 0rem 2rem 2rem 2rem;
-    overflow-y: auto;
-    max-height: 100vh;
+    width: 60%; padding: 0rem 2rem 2rem 2rem;
+    overflow-y: auto; max-height: 100vh;
   }
 }
 
 /* TABLET/MOBILE */
 @media screen and (max-width: 801px) {
-  input[type="text"],
-  input[type="email"],
-  textarea { font-size: 14px; }
-
+  input[type="text"], input[type="email"], textarea { font-size: 14px; }
   form .text-center { font-size: 14px; }
-
   article { scroll-margin-top: 64px; }
-
   .desktop-sidebar { display: none !important; }
-
   .navbar { display: flex !important; }
-
-  .main-wrapper {
-    display: block;
-    width: 100%;
-  }
-
-  .main-container {
-    width: 100%;
-    padding: 2rem 1rem 2rem 1rem;
-  }
-
-  .carousel-mobile-only {
-    max-width: 400px;
-    min-width: 400px;
-    margin: 1rem auto;
-  }
+  .main-wrapper { display: block; width: 100%; }
+  .main-container { width: 100%; padding: 2rem 1rem 2rem 1rem; }
+  .carousel-mobile-only { max-width: 400px; min-width: 400px; margin: 1rem auto; }
 }
 
 html, body { overflow-x: hidden; }
 
-/* FORMULAIRE DARK MODE */
+/* FORMULAIRE */
 form {
-  max-width: 600px;
-  width: 90%;
-  margin: 50px auto;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  max-width: 600px; width: 90%; margin: 50px auto;
+  padding: 0px; display: flex; flex-direction: column; gap: 15px;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #444;
-  background: #222;
-  color: #eee;
+input[type="text"], input[type="email"], textarea {
+  width: 100%; padding: 10px 12px;
+  border: 1px solid #444; background: #222; color: #eee;
 }
 
 input[type="text"]:focus,
@@ -462,36 +299,20 @@ input[type="email"]:focus,
 textarea:focus { border-color: #888; }
 
 button[type="submit"] {
-  width: 150px;
-  margin: 0 auto;
-  padding: 10px 15px;
-  border: none;
-  background-color: #222;
-  color: #fff;
-  cursor: pointer;
+  width: 150px; margin: 0 auto; padding: 10px 15px;
+  border: none; background-color: #222; color: #fff; cursor: pointer;
 }
 
 button[type="submit"]:hover { background-color: #333; }
-
-form .text-center {
-  text-align: center;
-  color: #aaa;
-}
+form .text-center { text-align: center; color: #aaa; }
 
 textarea {
-  resize: vertical;
-  min-height: 200px;
-  max-height: 400px;
-  border: 1px solid #444;
-  background: #222;
-  color: #eee;
+  resize: vertical; min-height: 200px; max-height: 400px;
+  border: 1px solid #444; background: #222; color: #eee;
 }
 
-body {
-  font-family: "Consolas", "Menlo", "Courier New", monospace;
-}
+body { font-family: "Consolas", "Menlo", "Courier New", monospace; }
 
-/* TABLETTES */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   body { font-size: 14px; }
   h1, h2, h3 { font-size: 16px; }
@@ -501,7 +322,6 @@ body {
   form .text-center { font-size: 14px; }
 }
 
-/* SMARTPHONES */
 @media screen and (max-width: 599px) {
   body { font-size: 14px; }
   h1, h2, h3 { font-size: 16px; }
@@ -509,127 +329,66 @@ body {
   input[type="text"], input[type="email"], textarea { font-size: 14px; }
   button[type="submit"] { font-size: 14px; }
   form .text-center { font-size: 14px; }
-  .carousel-mobile-only {
-    max-width: 300px;
-    min-width: 300px;
-    margin: 1rem auto;
-  }
+  .carousel-mobile-only { max-width: 300px; min-width: 300px; margin: 1rem auto; }
 }
 
-/* =============================================
-   CORRECTION C : classe overlay-open avec
-   !important pour bloquer le scroll Firefox
-   quand l'overlay est ouvert
-   ============================================= */
 body.overlay-open,
-html.overlay-open {
-  overflow: hidden !important;
-  height: 100vh !important;
-}
+html.overlay-open { overflow: hidden !important; height: 100vh !important; }
 
-/* Chrome, Safari, Edge scrollbar */
 ::-webkit-scrollbar { width: 12px; }
 ::-webkit-scrollbar-thumb { background-color: #ffae00; border-radius: 6px; }
 ::-webkit-scrollbar-track { background-color: #000; border-radius: 6px; }
+body { scrollbar-color: #ffae00 #000; scrollbar-width: thin; }
 
-/* Firefox scrollbar */
-body {
-  scrollbar-color: #ffae00 #000;
-  scrollbar-width: thin;
-}
-
-/* OVERLAY SCROLL */
 #blogOverlay,
 #blogOverlay * {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  user-select: none; -webkit-user-select: none;
+  -moz-user-select: none; -ms-user-select: none;
 }
 
 .blog-overlay-scroll {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+  flex: 1; overflow-y: auto; overflow-x: hidden;
   padding: 0rem 20px 20px 20px;
-  text-align: justify;
-  text-justify: inter-word;
-  letter-spacing: -1.6px;
-  hyphens: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  text-align: justify; text-justify: inter-word;
+  letter-spacing: -1.6px; hyphens: auto;
+  -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
 }
 
 .blog-overlay-scroll::-webkit-scrollbar { width: 8px; }
+.blog-overlay-scroll::-webkit-scrollbar-thumb { background-color: #ffae00; border-radius: 4px; }
+.blog-overlay-scroll::-webkit-scrollbar-track { background-color: rgba(255, 174, 0, 0.1); }
 
-.blog-overlay-scroll::-webkit-scrollbar-thumb {
-  background-color: #ffae00;
-  border-radius: 4px;
-}
-
-.blog-overlay-scroll::-webkit-scrollbar-track {
-  background-color: rgba(255, 174, 0, 0.1);
-}
-
-/* =============================================
-   CORRECTION D : titre sticky overlay mobile
-   compensé avec safe-area-inset-top + dvh
-   ============================================= */
 .blog-overlay-scroll h2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 20px;
   padding-top: max(1rem, env(safe-area-inset-top, 1rem));
-  position: sticky;
-  top: 0;
-  gap: 30px;
+  position: sticky; top: 0; gap: 30px;
   background: rgba(15, 15, 15, 0.95);
-  z-index: 100;
-  flex-shrink: 0;
+  z-index: 100; flex-shrink: 0;
 }
 
 .blog-overlay-btn {
-  width: 50px;
-  height: 50px;
-  background: #333;
-  color: #ffae00 !important;
-  border: 1px solid #444;
-  font-size: 1.5rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all 0.3s;
+  width: 50px; height: 50px; background: #333;
+  color: #ffae00 !important; border: 1px solid #444;
+  font-size: 1.5rem; cursor: pointer; flex-shrink: 0; transition: all 0.3s;
 }
 
-.blog-overlay-btn:hover {
-  background: #444;
-  border-color: #ffae00;
-}
-
+.blog-overlay-btn:hover { background: #444; border-color: #ffae00; }
 .blog-overlay-btn:active { background: #555; }
 
 #blogOverlay .blog-overlay-scroll img {
-  width: clamp(450px, 50%, 600px);
-  height: auto;
-  object-fit: contain;
+  width: clamp(450px, 50%, 600px); height: auto; object-fit: contain;
 }
 
 @media screen and (max-width: 800px) {
   #blogOverlay .blog-overlay-scroll img { width: 100%; }
 }
 
-#blogOverlay img {
-  display: block;
-  margin: 0 auto;
-}
+#blogOverlay img { display: block; margin: 0 auto; }
 
 #blogOverlay .blog-overlay-scroll iframe {
-  width: clamp(75%, 50vw, 600px);
-  aspect-ratio: 16 / 9;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border: 0;
+  width: clamp(75%, 50vw, 600px); aspect-ratio: 16 / 9;
+  height: auto; display: block; margin: 0 auto; border: 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -655,9 +414,8 @@ body { transition: none !important; }
   </div>
 </nav>
 
-<!-- MAIN WRAPPER: Sidebar + Contenu -->
+<!-- MAIN WRAPPER -->
 <div class="main-wrapper">
-  <!-- SIDEBAR DESKTOP -->
   <div class="desktop-sidebar">
     <div class="carousel-container">
       <div id="demo-desktop" class="carousel slide" data-ride="carousel">
@@ -673,8 +431,6 @@ body { transition: none !important; }
     </div>
     <ul class="navbar-nav" id="desktop-menu"></ul>
   </div>
-
-  <!-- CONTENU -->
   <div class="main-container" id="content-container"></div>
 </div>
 
@@ -685,8 +441,15 @@ body { transition: none !important; }
   </div>
 </div>
 
+<!-- OVERLAY DE TRANSITION (blur gaussien pendant le repositionnement) -->
+<div id="transitionOverlay">
+  <div class="spinner-wrap">
+    <div class="spinner"></div>
+    <span class="spinner-label">retour...</span>
+  </div>
+</div>
+
 <script>
-// Désactivation complète pinch-to-zoom
 document.addEventListener('touchmove', function(e) {
   if (e.touches.length > 1) e.preventDefault();
 }, { passive: false });
@@ -707,27 +470,21 @@ async function loadConfig() {
   try {
     const response = await fetch('config.ini');
     if (!response.ok) throw new Error('config.ini non trouvé');
-
     const text = await response.text();
     const lines = text.split('\n');
     CONFIG = { images: [], markdownFiles: [] };
     let currentSection = '';
-
     lines.forEach(line => {
       line = line.trim();
       if (!line || line.startsWith('#') || line.startsWith(';')) return;
-
       if (line.startsWith('[') && line.endsWith(']')) {
         currentSection = line.slice(1, -1).toLowerCase();
         return;
       }
-
       const [key, ...valueParts] = line.split('=');
       const value = valueParts.join('=').trim();
       if (!key || !value) return;
-
       const cleanKey = key.trim();
-
       if (currentSection === 'images') {
         if (cleanKey === 'range') {
           const match = value.match(/(\d+)-(\d+)/);
@@ -743,7 +500,6 @@ async function loadConfig() {
         }
       }
     });
-
     return true;
   } catch (error) {
     console.error('Erreur config:', error);
@@ -754,14 +510,12 @@ async function loadConfig() {
 function generateDesktopCarousel() {
   const indicators = document.getElementById('desktop-indicators');
   const carouselInner = document.getElementById('desktop-carousel-inner');
-
   CONFIG.images.forEach((img, index) => {
     const li = document.createElement('li');
     li.setAttribute('data-target', '#demo-desktop');
     li.setAttribute('data-slide-to', index);
     if (index === 0) li.className = 'active';
     indicators.appendChild(li);
-
     const div = document.createElement('div');
     div.className = 'carousel-item' + (index === 0 ? ' active' : '');
     div.innerHTML = `<img src="${img}" alt="Photo ${index + 1}">`;
@@ -791,7 +545,6 @@ function parseBlogPosts(markdownContent) {
   let currentPost = null;
   let contentLines = [];
   let postsContent = [];
-
   lines.forEach((line, idx) => {
     if (line.startsWith('#### ')) {
       if (currentPost) {
@@ -806,12 +559,10 @@ function parseBlogPosts(markdownContent) {
       postsContent.push(idx);
     }
   });
-
   if (currentPost && contentLines.length > 0) {
     const htmlContent = marked.parse(contentLines.join('\n'));
     posts.push({ title: currentPost, content: htmlContent, excerpt: extractExcerpt(htmlContent) });
   }
-
   const withoutPosts = lines.filter((_, idx) => !postsContent.includes(idx)).join('\n').trim();
   return { posts, contentWithoutPosts: withoutPosts };
 }
@@ -820,14 +571,11 @@ async function loadMarkdownFile(fileName, index) {
   try {
     const response = await fetch(`${fileName}.md`);
     if (!response.ok) { console.warn(`${fileName}.md non trouvé`); return null; }
-
     const text = await response.text();
     const { title, content } = extractTitleFromMarkdown(text);
     const { posts, contentWithoutPosts } = parseBlogPosts(content);
     const htmlContent = marked.parse(contentWithoutPosts);
-
     if (posts.length > 0) blogPosts.push(...posts);
-
     return { id: `section-${index + 1}`, label: title, content: htmlContent, posts };
   } catch (error) {
     console.error(`Erreur ${fileName}.md:`, error);
@@ -861,10 +609,8 @@ function generateFirstSection() {
     <div class="carousel-item ${i === 0 ? 'active' : ''}">
       <img src="${img}" alt="Photo ${i + 1}">
     </div>`).join('');
-
   const indicators = CONFIG.images.map((_, i) => `
     <li data-target="#demo" data-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></li>`).join('');
-
   return `
     <div class="carousel-container carousel-mobile-only">
       <div id="demo" class="carousel slide" data-ride="carousel">
@@ -877,7 +623,34 @@ function generateFirstSection() {
 }
 
 // ============================================================================
-// GESTION OVERLAY — avec History API pour le bouton retour navigateur
+// TRANSITION OVERLAY — blur gaussien pendant le repositionnement
+// ============================================================================
+const transitionOverlay = document.getElementById('transitionOverlay');
+
+function showTransitionOverlay() {
+  // Supprime un éventuel fade-out en cours
+  transitionOverlay.classList.remove('fading-out');
+  transitionOverlay.style.transition = 'opacity 0s';
+  transitionOverlay.classList.add('visible');
+}
+
+function hideTransitionOverlay() {
+  // Force un reflow pour que la transition CSS s'applique proprement
+  transitionOverlay.offsetHeight;
+  transitionOverlay.classList.add('fading-out');
+  transitionOverlay.classList.remove('visible');
+
+  // Nettoyage après la fin de la transition (0.55s)
+  const cleanup = () => {
+    transitionOverlay.classList.remove('fading-out');
+    transitionOverlay.style.transition = '';
+    transitionOverlay.removeEventListener('transitionend', cleanup);
+  };
+  transitionOverlay.addEventListener('transitionend', cleanup, { once: true });
+}
+
+// ============================================================================
+// GESTION OVERLAY BLOG — avec History API + transition blur au retour
 // ============================================================================
 class OverlayManager {
   constructor() {
@@ -915,10 +688,9 @@ class OverlayManager {
     if (this.isOpen) return;
     this.isOpen = true;
 
-    // Détecter la source du scroll selon le contexte (desktop vs mobile)
+    // Détecter la source du scroll (desktop vs mobile)
     const mainContainer = document.querySelector('.main-container');
     const isMobile = window.innerWidth <= 800;
-
     if (isMobile || !mainContainer) {
       this.savedScrollTop = window.scrollY || window.pageYOffset;
       this._scrollTarget = 'window';
@@ -931,61 +703,53 @@ class OverlayManager {
     this.overlay.classList.add('active');
     this.lockBodyScroll();
 
-    // Crée une fausse entrée dans l'historique pour intercepter le bouton retour
+    // History API : crée une entrée fictive pour intercepter le bouton retour
     history.pushState({ overlay: true }, '');
 
-    // Écoute le bouton retour navigateur
-    this._onPopState = (e) => {
-      if (this.isOpen) {
-        // Le navigateur a déjà consommé l'entrée pushState, on ferme sans go(-1)
-        this._closeWithoutHistory();
-      }
+    this._onPopState = () => {
+      if (this.isOpen) this._closeWithoutHistory();
     };
     window.addEventListener('popstate', this._onPopState);
 
-    // Bouton fermeture dans l'overlay
     const closeBtn = document.getElementById('blogOverlayClose');
     if (closeBtn) closeBtn.addEventListener('click', () => this.close());
 
-    // Fermer au clic sur le fond
     this._onOverlayClick = (e) => {
       if (e.target === this.overlay) this.close();
     };
     this.overlay.addEventListener('click', this._onOverlayClick);
 
-    // Fermer à Escape
     this._onKeyDown = (e) => {
       if (e.key === 'Escape' && this.isOpen) this.close();
     };
     document.addEventListener('keydown', this._onKeyDown);
   }
 
-  // Fermeture via bouton ↵ ou Escape : on recule dans l'historique,
-  // ce qui déclenche popstate → _closeWithoutHistory()
+  // Fermeture via bouton ↵ ou Escape
   close() {
     if (!this.isOpen) return;
-    // Retirer le listener popstate avant go(-1) pour ne pas boucler
     if (this._onPopState) {
       window.removeEventListener('popstate', this._onPopState);
       this._onPopState = null;
     }
     history.go(-1);
-    // go(-1) est asynchrone, on attend le popstate ou on ferme directement
-    // Pour fiabilité on ferme directement ici aussi
     this._closeWithoutHistory();
   }
 
-  // Fermeture sans toucher à l'historique (appelée par popstate ou par close())
+  // Fermeture sans toucher à l'historique (popstate ou close())
   _closeWithoutHistory() {
     if (!this.isOpen) return;
     this.isOpen = false;
+
+    // 1. Afficher immédiatement le blur de transition
+    showTransitionOverlay();
+
+    // 2. Masquer l'overlay blog
     this.overlay.classList.remove('active');
     this.unlockBodyScroll();
-
-    // Vider le contenu pour stopper les iframes/vidéos
     this.overlayScroll.innerHTML = '';
 
-    // Nettoyer tous les listeners
+    // Nettoyer les listeners
     if (this._onOverlayClick) {
       this.overlay.removeEventListener('click', this._onOverlayClick);
       this._onOverlayClick = null;
@@ -999,18 +763,23 @@ class OverlayManager {
       this._onPopState = null;
     }
 
-    // Restaurer la position de scroll
+    // 3. Repositionner le scroll en arrière-plan (invisible grâce au blur)
     requestAnimationFrame(() => {
       if (this._scrollTarget === 'window') {
         window.scrollTo(0, this.savedScrollTop);
       } else {
-        const mainContainer = document.querySelector('.main-container');
-        if (mainContainer) mainContainer.scrollTop = this.savedScrollTop;
+        const mc = document.querySelector('.main-container');
+        if (mc) mc.scrollTop = this.savedScrollTop;
       }
+
+      // 4. Laisser un court instant (le temps que le scroll se stabilise)
+      //    puis faire disparaître le blur en fondu
+      setTimeout(() => {
+        hideTransitionOverlay();
+      }, 120);
     });
   }
 
-  // CORRECTION C : classes CSS avec !important pour Firefox
   lockBodyScroll() {
     document.body.classList.add('overlay-open');
     document.documentElement.classList.add('overlay-open');
@@ -1048,13 +817,10 @@ function initializeNavigation() {
       e.preventDefault();
       const href = this.getAttribute('href');
       const target = document.querySelector(href);
-
       if (target) {
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         document.querySelectorAll(`a[href="${href}"]`).forEach(l => l.classList.add('active'));
-
         target.scrollIntoView({ behavior: 'smooth' });
-
         const navbar = document.querySelector('.navbar-collapse');
         if (navbar && navbar.classList.contains('show')) navbar.classList.remove('show');
       }
@@ -1064,15 +830,12 @@ function initializeNavigation() {
 
 async function generateContent() {
   const container = document.getElementById('content-container');
-
   await loadAllMarkdownFiles();
   generateMenu();
 
   let html = '';
-
   sections.forEach((section, index) => {
     const carousel = index === 0 ? generateFirstSection() : '';
-
     let tiles = '';
     if (section.posts && section.posts.length > 0) {
       const tilesHTML = section.posts.map((post) => `
@@ -1082,7 +845,6 @@ async function generateContent() {
         </div>`).join('');
       tiles = `<div class="blog-tiles">${tilesHTML}</div>`;
     }
-
     html += `
       <article id="${section.id}">
         <h2>${section.label}</h2>
@@ -1093,7 +855,6 @@ async function generateContent() {
   });
 
   container.innerHTML = html;
-
   initializeNavigation();
   initializeBlogTiles();
 }
@@ -1105,12 +866,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       '<div class="alert alert-danger">Erreur : Fichier config.ini non trouvé.</div>';
     return;
   }
-
   generateDesktopCarousel();
   await generateContent();
 });
 
-// Récupérer codex.ini
 fetch('codex.ini')
   .then(response => response.text())
   .then(data => {
@@ -1121,6 +880,5 @@ fetch('codex.ini')
   .catch(err => console.error(err));
 
 </script>
-
 </body>
 </html>
