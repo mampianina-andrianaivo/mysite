@@ -2,7 +2,7 @@
 
 #### Le réseau bimodal est plus associé à une déclaration d’état viable
 
-<strong>Article : 24/11/2025 | </strong>
+**Article : 24/11/2025 |**
 
 Nos travaux montrent que la viabilité des agriculteurs familiaux malgaches pourrait être partiellement liée aux pratiques socialisées de sécurisation face aux chocs, incluant des soutiens interpersonnels et organisationnels au sein des réseaux de sécurisation. Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des analyses multidimensionnelles (correspondances multiples et classifications hiérarchiques) sur une base de données collectée dans deux communes de la région malgache d’Itasy.
 
@@ -13,9 +13,9 @@ Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et 
 Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des analyses multidimensionnelles (correspondances multiples et classifications hiérarchiques) sur une base de données collectée dans deux communes de la région malgache d’Itasy. Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et organisations) et trois interpersonnels. Le réseau bimodal est plus associé à une déclaration d’état viable.
 
 #### Documentaire sur Madagascar
-<strong>Vidéo : partagé le 24/11/2025 | </strong>
+**Vidéo : partagé le 24/11/2025 |**
 
-<center>Je souhaite partager ce documentaire réalisé sur Madagascar...</center>
+Je souhaite partager ce documentaire réalisé sur Madagascar.
 
 Ce film documentaire a été réalisé par Christophe LEROY et produit par le GREThA (UMR CNRS 5113 et Université de Bordeaux) avec le soutien de l’IRD et de l’IISS ONG, dans le cadre du projet de recherche Protect.
 
