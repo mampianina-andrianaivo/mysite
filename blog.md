@@ -27,8 +27,6 @@ Pour en savoir plus :
 
 https://www.troisiemeporteagauche.com/trou-de-caimans/
 
-<br>
-
 https://www.bse.u-bordeaux.fr/wp-content/uploads/2023/01/Presentation-film-Trou-de-Caiman_compressed.pdf
 
 </p>
