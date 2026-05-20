@@ -24,9 +24,13 @@ A Madagascar, si le système national de protection sociale reste embryonnaire, 
 <p style="text-align: left;">
 Pour en savoir plus :
 <br>
+
 https://www.troisiemeporteagauche.com/trou-de-caimans/
+
 <br>
+
 https://www.bse.u-bordeaux.fr/wp-content/uploads/2023/01/Presentation-film-Trou-de-Caiman_compressed.pdf
+
 </p>
 
 <br>
