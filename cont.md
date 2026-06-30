@@ -1,17 +1,10 @@
 ## Contact
 
-<form method="post" action="https://forms.un-static.com/forms/6c2d1f338d1dd0f1ba01a94b4b434e07fe598420">
-  <input type="text" name="name" placeholder="Nom" required>
-  <input type="email" name="email" placeholder="Adresse e-mail" required>
-  <textarea name="message" cols="40" rows="6""></textarea>
-
-<input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
-
-<input type="text" name="honeypot" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
-
-  <button type="submit">Envoyer</button>
-<center>(Powered by Un-static Forms</a>)</center>
-  </div>
-  <center>2026 Andrianaivo</div></center>
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="b53b26c5-388a-488c-a937-dc2447ed282b">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit Form</button>
 </form>
 
