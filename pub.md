@@ -1,6 +1,6 @@
 ## Publications
 
-### Article scientifique – Région d’Itasy, Madagascar MG | 2025
+### Article scientifique – Région d’Itasy, Madagascar | 2025
 **Andrianaivo, M. C.** (2025).  
 *Rôle des réseaux sociaux de sécurisation dans la viabilité des exploitations agricoles familiales : cas de deux communes rurales de la région d’Itasy (Madagascar).*  
 *Mondes en développement*, 53(1), 35–56.  
