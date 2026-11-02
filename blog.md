@@ -15,6 +15,10 @@ Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des
 #### Documentaire sur Madagascar
 **Partage : partagé le 24/11/2025 |**
 
+<iframe src="https://player.vimeo.com/video/574817226?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow=" fullscreen;"></iframe><script src="https://player.vimeo.com/api/player.js"></script>
+
+<br>
+
 Je souhaite partager ce documentaire réalisé sur Madagascar.
 
 Ce film documentaire a été réalisé par Christophe LEROY et produit par le GREThA (UMR CNRS 5113 et Université de Bordeaux) avec le soutien de l’IRD et de l’IISS ONG, dans le cadre du projet de recherche Protect.
@@ -28,9 +32,3 @@ Pour en savoir plus :
 https://www.troisiemeporteagauche.com/trou-de-caimans/
 
 https://www.bse.u-bordeaux.fr/wp-content/uploads/2023/01/Presentation-film-Trou-de-Caiman_compressed.pdf
-
-</p>
-
-<br>
-
-<iframe src="https://player.vimeo.com/video/574817226?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow=" fullscreen;"></iframe><script src="https://player.vimeo.com/api/player.js"></script>
