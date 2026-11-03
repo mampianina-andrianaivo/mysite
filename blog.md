@@ -13,7 +13,7 @@ Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et 
 Nous avons caractérisé ces réseaux grâce à une typologie, en mobilisant des analyses multidimensionnelles (correspondances multiples et classifications hiérarchiques) sur une base de données collectée dans deux communes de la région malgache d’Itasy. Quatre types de réseaux émergent : un réseau bimodal (personnes physiques et organisations) et trois interpersonnels. Le réseau bimodal est plus associé à une déclaration d’état viable.
 
 ### Documentaire sur Madagascar
-**Partage : 24/11/2025 |**
+**Partage : partagé le 24/11/2025 |**
 
 <iframe src="https://player.vimeo.com/video/574817226?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow=" fullscreen;"></iframe><script src="https://player.vimeo.com/api/player.js"></script>
 
