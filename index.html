@@ -266,10 +266,12 @@ hr { border: 0; height: 2px; margin: 1.2rem 0; box-shadow: inset 0 1px 0 rgba(0,
   border: 1px solid var(--panel-border); border-radius: 4px;
   background: #000; box-shadow: var(--panel-shadow);
 }
-.slider-frame { touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
-.slider-frame.dragging { cursor: grabbing; }
+.slider-frame { touch-action: pan-y; cursor: default; user-select: none; -webkit-user-select: none; }
+.slider-side { position: absolute; top: 0; bottom: 0; width: 30%; z-index: 2; padding: 0; border: 0; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.slider-side.prev { left: 0; }
+.slider-side.next { right: 0; }
+.slider-side:focus-visible { outline: 2px solid #3c7fb1; outline-offset: -2px; }
 .slider-track { display: flex; height: 100%; transition: transform 0.45s ease; will-change: transform; }
-.slider-frame.dragging .slider-track { transition: none; }
 .slider-track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; margin: 0; border: 0; border-radius: 0; pointer-events: none; -webkit-user-drag: none; }
 .slider-bar { display: flex; align-items: center; justify-content: center; height: 22px; margin-top: 0.4rem; }
 .dots { display: flex; gap: 0.35rem; }
@@ -546,58 +548,82 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 
 function buildSlider(container) {
   if (!CONFIG.images.length) return;
-  const many = CONFIG.images.length > 1;
+  const count = CONFIG.images.length;
+  const many = count > 1;
+  // Boucle : une copie de la dernière photo au début et de la première à la fin
+  const list = many ? [CONFIG.images[count - 1], ...CONFIG.images, CONFIG.images[0]] : CONFIG.images;
   container.innerHTML = `
-    <div class="slider-frame"><div class="slider-track">${CONFIG.images.map((src, i) => `<img src="${esc(src)}" alt="Photo ${i + 1}" draggable="false" ${i ? 'loading="lazy"' : ''}>`).join('')}</div></div>
+    <div class="slider-frame"><div class="slider-track">${list.map((src, i) => `<img src="${esc(src)}" alt="" draggable="false">`).join('')}</div>
+    ${many ? `<button type="button" class="slider-side prev" aria-label="Photo précédente"></button><button type="button" class="slider-side next" aria-label="Photo suivante"></button>` : ''}</div>
     ${many ? `<div class="slider-bar"><div class="dots">${CONFIG.images.map((_, i) => `<button type="button" class="dot ${i ? '' : 'active'}" data-go="${i}" aria-label="Photo ${i + 1}"></button>`).join('')}</div></div>` : ''}`;
   if (!many) return;
   const frame = container.querySelector('.slider-frame');
   const track = container.querySelector('.slider-track');
   const dots = container.querySelectorAll('.dot');
-  const count = CONFIG.images.length;
-  let pos = 0;
-  const place = (offsetPx = 0) => { track.style.transform = `translateX(calc(${-pos * 100}% + ${offsetPx}px))`; };
-  const show = (n) => {
-    pos = (n + count) % count;
-    dots.forEach((d, i) => d.classList.toggle('active', i === pos));
-    place();
+  let idx = 1; // position dans la piste (1 = première vraie photo)
+  let busy = false;
+  const place = (offsetPx = 0, animate = true) => {
+    track.style.transition = animate ? '' : 'none';
+    track.style.transform = `translateX(calc(${-idx * 100}% + ${offsetPx}px))`;
   };
+  const real = () => (idx - 1 + count) % count;
+  const go = (n) => {
+    if (busy) return;
+    busy = true;
+    idx = n;
+    dots.forEach((d, i) => d.classList.toggle('active', i === real()));
+    place();
+    setTimeout(settle, 470);
+  };
+  // Arrivé sur une copie : on saute sans animation sur la vraie photo
+  function settle() {
+    busy = false;
+    if (idx === 0) { idx = count; place(0, false); }
+    else if (idx === count + 1) { idx = 1; place(0, false); }
+  }
+  place(0, false);
   let timer = null;
-  const restart = () => { clearInterval(timer); timer = setInterval(() => show(pos + 1), 6000); };
+  const restart = () => { clearInterval(timer); timer = setInterval(() => go(idx + 1), 6000); };
   restart();
+  let dragged = false;
   container.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-go]');
-    if (b) { show(+b.dataset.go); restart(); }
+    if (dragged) { dragged = false; return; }
+    const dot = e.target.closest('[data-go]');
+    if (dot) { go(+dot.dataset.go + 1); restart(); return; }
+    if (e.target.closest('.slider-side.prev')) { go(idx - 1); restart(); }
+    else if (e.target.closest('.slider-side.next')) { go(idx + 1); restart(); }
   });
-  // Glisser au doigt (ou à la souris) pour changer de photo
+
+  // Glisser au doigt (événements tactiles, plus fiables sur téléphone)
   let startX = null, startY = 0, dx = 0, horizontal = null;
-  frame.addEventListener('pointerdown', (e) => {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    startX = e.clientX; startY = e.clientY; dx = 0; horizontal = null;
-    clearInterval(timer);
-  });
-  frame.addEventListener('pointermove', (e) => {
+  const begin = (x, y) => { if (busy) return; startX = x; startY = y; dx = 0; horizontal = null; clearInterval(timer); };
+  const move = (x, y, e) => {
     if (startX === null) return;
-    dx = e.clientX - startX;
-    if (horizontal === null && (Math.abs(dx) > 6 || Math.abs(e.clientY - startY) > 6)) {
-      horizontal = Math.abs(dx) > Math.abs(e.clientY - startY);
-      if (horizontal) { frame.classList.add('dragging'); frame.setPointerCapture(e.pointerId); }
+    dx = x - startX;
+    if (horizontal === null && (Math.abs(dx) > 8 || Math.abs(y - startY) > 8)) horizontal = Math.abs(dx) > Math.abs(y - startY);
+    if (horizontal) { if (e.cancelable) e.preventDefault(); place(dx, false); }
+  };
+  const finish = () => {
+    if (startX === null) return;
+    const limit = Math.min(50, frame.clientWidth * 0.12);
+    if (horizontal) {
+      dragged = true;
+      setTimeout(() => { dragged = false; }, 50);
+      if (dx <= -limit) go(idx + 1);
+      else if (dx >= limit) go(idx - 1);
+      else place();
     }
-    if (horizontal) place(dx);
-  });
-  const end = () => {
-    if (startX === null) return;
-    frame.classList.remove('dragging');
-    const limit = Math.min(60, frame.clientWidth * 0.15);
-    if (horizontal && dx <= -limit) show(pos + 1);
-    else if (horizontal && dx >= limit) show(pos - 1);
-    else place();
     startX = null;
     restart();
   };
-  frame.addEventListener('pointerup', end);
-  frame.addEventListener('pointercancel', end);
-  frame.addEventListener('lostpointercapture', end);
+  frame.addEventListener('touchstart', (e) => begin(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+  frame.addEventListener('touchmove', (e) => move(e.touches[0].clientX, e.touches[0].clientY, e), { passive: false });
+  frame.addEventListener('touchend', finish);
+  frame.addEventListener('touchcancel', finish);
+  // À la souris sur ordinateur
+  frame.addEventListener('mousedown', (e) => { if (e.button === 0) begin(e.clientX, e.clientY); });
+  window.addEventListener('mousemove', (e) => { if (startX !== null) move(e.clientX, e.clientY, e); });
+  window.addEventListener('mouseup', finish);
 }
 
 function buildMenus() {
